@@ -14,23 +14,29 @@ body {
 }
 nav {
     background-color: rgb(8, 8, 8);
-    color: rgb(228, 228, 135);
+    color: #fdd808
 }
 
 a {
-  color: rgb(228, 228, 135);
+  color: #fdd808;
   font-family: RamaSlabMW01-Heavy, "Courier New", Courier, monospace;
   font-size: 40px;
   letter-spacing: 2px;
   text-decoration: none;
   margin-right: 20px;
+  /* text-shadow: 0 0 3px #f9341e, 0 0 5px #0000FF; */
+  text-shadow: -2px 3px 2px #f9341e;
+
+
+
 }
 a:visited {
     background-color: grey;
-    color: rgba(205, 205, 49, 0.789)
+    color: #fdd808
 }
 a:hover {
-    color: rgba(232, 182, 32, 0.789)
+    color: rgba(232, 239, 96, 0.961);
+    text-shadow: none;
 }
 
 img {
