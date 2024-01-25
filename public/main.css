@@ -1,0 +1,54 @@
+
+@import url(https://db.onlinewebfonts.com/c/15b543784a28c07ac981cee1d665fbb3?family=RamaSlabMW01-Heavy);
+
+body {
+  background-color: rgb(156, 149, 149);
+  margin: 0;
+  padding: 0;
+  background-color: rgba(8, 8, 8, 0.932);
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 70px;
+}
+nav {
+    background-color: rgb(8, 8, 8);
+    color: rgb(228, 228, 135);
+}
+
+a {
+  color: rgb(228, 228, 135);
+  font-family: RamaSlabMW01-Heavy, "Courier New", Courier, monospace;
+  font-size: 40px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  margin-right: 20px;
+}
+a:visited {
+    background-color: grey;
+    color: rgba(205, 205, 49, 0.789)
+}
+a:hover {
+    color: rgba(232, 182, 32, 0.789)
+}
+
+img {
+  width: 20%;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
