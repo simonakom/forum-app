@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: rgba(8, 8, 8, 0.932);
+  color: rgb(227, 194, 222);
 }
 .container {
     max-width: 1000px;
