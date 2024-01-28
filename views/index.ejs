@@ -8,16 +8,19 @@
     <link rel="stylesheet" href="public/main.css">
 </head>
 <body>
+
+    <%- include("./components/title.ejs")%>
+    <div class="hr"></div>
     <%- include("./components/nav-bar.ejs")%>
+    <div class="hr"></div>
     <div class="container">
-    <img src="public/pictures/dance.png" alt="Dance">
+
      
     <% if(!username) {%>
         <h5>Please, log in</h5>
     <% }else {%>
         <h5>Welcome, <%= username %></h5>
     <% } %>
-
 
     <ul>
         <% for (const product of list) { %>
