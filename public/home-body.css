@@ -1,0 +1,104 @@
+
+.container {
+    margin: 0 auto;
+    width: 85%;
+    min-height: 35%;
+    font-size: 30px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .gap-from-top {
+    margin-top: 60px;
+  }
+  p {
+    margin: 0;
+  }
+
+  /* table */
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #312f316a;
+  }
+  th {
+    text-align: left;
+    font-weight: 100;
+    font-size: 25px;
+  }
+  tr th {
+    background-color: #6c5c70;
+    color: rgb(233, 214, 227);
+  }
+  
+  th {
+    padding: 0.6rem 0.8rem;
+  }
+  tbody tr {
+    border-bottom: solid #b7b7b7 0.25px;
+  }
+  .single-number {
+    background-color: #c5a5ca78;
+    border-radius: 100%;
+    width: fit-content;
+    text-align: center;
+    color: white;
+    padding: 0.4rem;
+    font-weight: 300;
+    margin-right: 40px;
+    font-size: 24px;
+  }
+  .post {
+    display: flex;
+    /* gap: 1rem; */
+  }
+  .post img {
+    width: 50px;
+    height: 50px;
+    border-radius: 9999px;
+  }
+  .topic-details {
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    justify-content: space-between;
+    color: rgb(241, 241, 241);
+  }
+  .topic-details a {
+    text-decoration: none;
+    color: rgb(149, 156, 156);
+    font-size: 18px;
+  }
+  .topic-details a:hover {
+    text-decoration: underline;
+    text-shadow: none;
+  }
+  .author-outline {
+    text-decoration: none;
+    color: rgb(16, 97, 155);
+    margin: 0;
+  }
+  .author-outline:visited {
+    text-decoration: none;
+    color: rgb(16, 97, 155);
+  }
+  .author-outline::after {
+    content: "";
+    display: block;
+    height: 0.2rem;
+    width: 100%;
+    background-color: rgb(98, 59, 127);
+  }
+  .author-outline:hover {
+    text-shadow: none;
+  }
+  .last-post .date {
+    font-size: 14px;
+    margin-bottom: 2rem;
+  }
+  .last-post  {
+    margin-top: 1rem;
+  }
+  .last-post span  {
+    font-size: 18px;
+  }

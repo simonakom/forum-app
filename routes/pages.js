@@ -7,7 +7,7 @@ router.get ("/", (req, res) => {
     res.render("index", {
         title: "PulpCinemaHub",
         username: "simonak",
-        list: ["Product1", "Product2", "Milk", "Chocolate"]
+        // list: ["Product1", "Product2", "Milk", "Chocolate"]
     });
 });
 

@@ -1,0 +1,90 @@
+
+@import url(https://db.onlinewebfonts.com/c/15b543784a28c07ac981cee1d665fbb3?family=RamaSlabMW01-Heavy);
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: rgb(233, 214, 227);
+  background-image: linear-gradient(0deg, #2f2836 2%,  #060607 100%);
+  background-size: cover;
+  background-attachment: fixed; 
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+/* Title */
+.intro {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+img {
+  width: 160px; 
+  height: auto;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 20px;
+}
+.title {
+  color: #fdd808;
+  font-family: RamaSlabMW01-Heavy, "Courier New", Courier, monospace;
+  font-size: 70px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-shadow: -2px 3px 2px #f9341e;
+  margin-right: 20px;
+  margin-top: 50px;
+}
+.description {
+  display: block;
+  color: #d6b80e;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 26px;
+  text-decoration: none;
+  margin-right: 20px;
+  text-shadow: -2px 1px 5px #3a2321;
+}
+@media (max-width: 550px) {
+  .title {
+    font-size: 50px;
+  }
+  .description {
+    font-size: 20px;
+  }
+  img {
+    width: 130px; 
+  }
+  .intro {
+    height: 170px;
+  }
+}
+@media (max-width: 420px) {
+  .title {
+    font-size: 45px;
+    margin-top: 55px;
+  }
+  .description {
+   display: none;
+  }
+  img {
+    width: 120px; 
+    margin-right: 5px;
+    margin-left: 10px;
+  }
+  .intro {
+    height: 150px;
+  }
+}
+@media (max-width: 348px) {
+  .title {
+    font-size: 30px;
+    margin-top: 55px;
+  }
+  img {
+    width: 110px; 
+    margin-right: 5px;
+    margin-left: 10px;
+  }
+  .intro {
+    height: 135px;
+  }
+}

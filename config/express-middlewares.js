@@ -22,7 +22,7 @@ app.use("/public", publicRouter);
 // Routs of pages
 app.use (pagesRouter); 
 // Routs of user
-app.use ("/api/user", userRouter); //kad pasiekti regoster endpoint: http://localhost:3000/api/user/register
+app.use ("/api/user", userRouter); //kad pasiekti register endpoint: http://localhost:3000/api/user/register
 }
 
 
