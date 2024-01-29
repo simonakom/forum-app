@@ -4,7 +4,7 @@ require("dotenv").config();// Laikinai (kol app nesustoja ar ne-crashina) sukonf
 function config() {
     // console.log(process.env.A_VARIABLE); - //process.env laiko visus aplinkos kintamuosius.
 
-    // mongoose.connect("mongodb+srv://simonak:ntdpm8YPdulWFpIk@forum.dhm2709.mongodb.net/PulpCinemaHub"-serverio prisijungimas prie duomenu bazes pasinaudojant url)
+    // mongoose.connect("mongodb+srv://username:password@forum.dhm2709.mongodb.net/PulpCinemaHub"-serverio prisijungimas prie duomenu bazes pasinaudojant url)
     mongoose.connect(process.env.MONGO_CONNECTION 
         .replace("__DB_USER", process.env.DB_USER )
         .replace("__DB_PASSWORD", process.env.DB_PASSWORD)
