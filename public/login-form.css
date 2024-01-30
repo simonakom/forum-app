@@ -1,7 +1,7 @@
 .container {
     margin: 0 auto;
     width: 100%;
-    font-size: 30px;
+	min-height: 25rem;
     font-weight: 200;
     font-family:Arial, Helvetica, sans-serif;
     display: flex;
@@ -10,8 +10,8 @@
     color: aliceblue;
   }
 .gap-from-top {
-    margin-top: 100px;
-  }
+	margin-top: 100px;
+}
 .title-account {
     font-weight: 100;
     font-size: 30px;
@@ -19,34 +19,35 @@
     padding-bottom: 15px;
     padding-top: 10px;
     text-align: center;
-  }
-.register {
+}
+.login {
     background-color: #dfcfe337;
     margin-bottom: 10rem;
     border-radius: 30px;
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    height: 615px;
+    gap: 10px;
+    height: 555px;
     box-shadow: 1px 1px 16px rgba(164, 200, 232, 0.539);
 }
 .image-container img {
-   width: 550px;
-   height: auto;
-   margin: 0;
-   border-top-left-radius: 30px;
-   border-bottom-left-radius: 30px;
-   
-}
-.register-form {
-    padding: 50px 20px 0 20px;
+    width: 550px;
+    height: auto;
+    margin: 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+ }
+form {
+    padding: 20px 20px 0 30px;
     font-size: 14px;
     display: flex;
-    flex-direction: column;
+	flex-direction: column;
     min-width: 270px;
+    margin-top: 70px;
+    
 }
-.register div span {
-    display: block;
+div label span {
+	display: inline-block;
     padding-bottom: 7px;
 }
 label input {
@@ -63,7 +64,6 @@ label input:focus {
     color: antiquewhite;
     box-shadow: 1px 1px 16px rgba(164, 200, 232, 0.539);
 }
-/* button */
 .register-button{
     background-color: #1b0f1c;
     color: aliceblue;
@@ -81,53 +81,20 @@ label input:focus {
     font-size: 13px; 
     transition: 0.1s ease; 
 }
-/* choose file */
-.file-input-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-.custom-file-input {
-    background-color: #1b0f1c;
-    width: 100px;
-    color: aliceblue;
-    border: none;
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    margin-bottom: 10px;
-    display: inline-block;
-    font-size: 14px;
-}
-.custom-file-input:hover{
-    background-color: rgb(24, 15, 24);
-    text-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
-    font-size: 14px; 
-    transition: 0.1s ease; 
-}
-#selected-file-name {
-    font-size: 13px;
-    color: aliceblue;
-}
-#profile-photo {
-    display: none; /* Style the file input to be hidden */
-}
-/* link */
-.standart-link  {
+.no-account  {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
-.standart-link a {
+.no-account a {
 	text-decoration: none;
     color: rgb(166, 175, 182);
     font-size: 14px;
 }
-.standart-link a:hover {
+.no-account a:hover {
     color: #dec225;
     text-shadow: none;
     font-size: 13px; 
     transition: 0.1s ease; 
 }
-
 
 

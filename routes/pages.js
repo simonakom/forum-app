@@ -43,7 +43,7 @@ router.get("/my-profile", async (req, res) => {
 	const config = {
 		activeTab: "Profile",
 		title: "PulpCinemaHub - My profile",
-		// profilePhoto: "http://localhost:3000/public/images/img-1706560009732.jpg",
+		profilePhoto: "http://localhost:3000/public/images/img-1706637058117.jpg",
 		// loggedIn: !!req.session.user?.loggedIn,
 	};
 	res.render("profile", config);

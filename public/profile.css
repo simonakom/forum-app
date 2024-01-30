@@ -1,28 +1,102 @@
+
+  .container {
+	margin: 0 auto;
+	width: 1000%;
+	font-size: 14px;
+	font-weight: 200;
+	font-family:Arial, Helvetica, sans-serif;
+	color: aliceblue;
+	width: 80%;
+	/* display: flex;
+    flex-direction: row;
+    align-items: center; */
+}
+.gap-from-top {
+    margin-top: 100px;
+  }
+
+/* .bg-content {
+	background-color: #dfcfe337;
+} */
+.dashboard{
+	display: flex;
+	flex-direction: row;
+	/* display: inline-flex; */
+	/* padding: 0.5rem; */
+	/* flex-wrap: wrap; */
+	/* border-radius: 8px; */
+	justify-content: center;
+	gap: 3rem;
+	width: 100%;
+}
 .profile-photo-large {
-	width: 250px;
-	height: 250px;
+	margin-top: 20px;
+	width: 300px;
+	height: 300px;
 	overflow: hidden;
 	border-radius: 100%;
 	border: 1px solid gray;
-	justify-self: flex-start;
+	align-self: flex-start;
+	box-shadow: 1px 1px 14px rgba(164, 200, 232, 0.539);
 }
 .profile-photo-large img {
-	width: 250px;
-	height: 250px;
+	margin: 0;
+	width: 300px;
+	height: 300px;
 	object-fit: cover;
 }
-
-.dashboard {
-	display: inline-flex;
-	padding: 0.5rem;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 2rem;
-	width: 100%;
-	border-radius: 8px;
+.profile-info {
+	background-color: #dfcfe337;
+	width: 40%;
+	margin-bottom: 100px;
+	padding: 20px 40px;
+	border-radius: 20px;
+	box-shadow: 1px 1px 6px rgba(164, 200, 232, 0.539);	
 }
-
+.heading {
+	font-weight: 100;
+    font-size: 30px;
+	border-bottom: 2px solid #1f1422a4;
+    padding-bottom: 15px;
+    text-align: center;
+	/* padding-right: 1rem; */
+	/* width: fit-content; */
+}
 .data-row span {
 	display: inline-block;
-	font-size: 18px;
+	font-size: 14px;
+}
+.gap-top {
+	margin-top: 2rem;
+	border-bottom: 1px solid #1f1422a4;
+	margin: 20px 0px;
+}
+
+.thumbs-up {
+	color: #15e854;
+	cursor: pointer;
+}
+.thumbs-down {
+	color: rgb(223, 42, 93);
+	cursor: pointer;
+}
+
+
+/* button */
+.standart-button{
+    background-color: #1b0f1c;
+    color: aliceblue;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px;
+    box-shadow: 1px 0px 4px rgba(164, 200, 232, 0.539);
+}
+.standart-button:hover{
+    background-color: rgb(24, 15, 24);
+    text-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
+    font-size: 13px; 
+    transition: 0.1s ease; 
 }

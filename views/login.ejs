@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../public/title.css">
     <link rel="stylesheet" href="../public/nav-bar.css">
     <link rel="stylesheet" href="../public/grid.css">
-    <link rel="stylesheet" href="../public/form.css">
+    <link rel="stylesheet" href="../public/login-form.css">    
 </head>
 <body>
     <%- include("./components/title.ejs")%>
@@ -17,45 +17,30 @@
     <%- include("./components/nav-bar.ejs")%>
     <div class="hr"></div>
 
-
-
     <div class="container gap-from-top">
-        <form
-            action="/api/user/login"
-            method="post"
-        >
-            <div>
-                <label>
-                    <span>Prisijungimo vardas</span>
-                    <input
-                        type="text"
-                        name="loginName"
-                    />
-                </label>
+        <div class="login">
+            <form action="/api/user/login" method="post">
+                <h4 class="title-account">Log In</h4>
+                <div>
+                    <label>
+                        <span>Username</span><input type="text" name="loginName"/>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <span>Password</span><input type="password" name="password"/>
+                    </label>
+                </div>
+                <button class="register-button">Log in</button>
+                <div class="no-account">
+                    <a href="/register">Still don't have an account?</a>
+                </div>
+            </form>
+            <div class="image-container">
+                <img src="../public/pictures/poster.jpg" alt="Dance">
             </div>
-            <div>
-                <label>
-                    <span>Slaptažodis</span>
-                    <input
-                        type="password"
-                        name="password"
-                    />
-                </label>
-            </div>
-            <div>
-                <a
-                    href="/register"
-                    class="standart-link"
-                    >Still don't have an account?</a
-                >
-            </div>
-            <button class="standart-button">Prisijungti</button>
-        </form>
+        </div>
     </div>
-
-
-
-    <script src=""></script>
     <script src="../public/index.js"></script>
 </body>
 </html>
