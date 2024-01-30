@@ -1,0 +1,28 @@
+.profile-photo-large {
+	width: 250px;
+	height: 250px;
+	overflow: hidden;
+	border-radius: 100%;
+	border: 1px solid gray;
+	justify-self: flex-start;
+}
+.profile-photo-large img {
+	width: 250px;
+	height: 250px;
+	object-fit: cover;
+}
+
+.dashboard {
+	display: inline-flex;
+	padding: 0.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2rem;
+	width: 100%;
+	border-radius: 8px;
+}
+
+.data-row span {
+	display: inline-block;
+	font-size: 18px;
+}

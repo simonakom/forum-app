@@ -46,6 +46,7 @@ nav {
   gap: 30px
 }
 .right-links {
+  color: al;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -57,7 +58,8 @@ nav {
   margin: 0;
 }
 .right-links a:hover {
-  color: #c082b7da;
+  color: aliceblue;
+  font-size: 19px;
   text-shadow: none;
   /* font-size: 27px;  */
   /* transition: color 0.1s ease; */
@@ -72,7 +74,8 @@ a:visited {
     color: #fdd808;
 }
 a:hover {
-  color: #c082b7da;
+  /* color: #c082b7da; */
+  color: aliceblue;
   text-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
   font-size: 18px; 
   transition: font-size 0.1s ease; 
@@ -81,7 +84,7 @@ a[data-tooltip]:hover::before {
   content: attr(data-tooltip);
   position: absolute;
   background-color: #2f2836;
-  color: #b08caaeb;
+  color: aliceblue;
   text-shadow: none;
   padding: 5px;
   border-radius: 6px;
@@ -108,13 +111,14 @@ a[data-tooltip]:hover::before {
   border-radius: 30px;
   background-color: #dfcfe32f;
   box-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
+  color: antiquewhite;
 }
 .search input::placeholder {
-  color: #fdd8087c;
+  color: rgba(250, 235, 215, 0.559);
 }
 .search input:focus {
-  background-color: #fdd8082e;
-  color: #fdd808;
+  background-color: #dfcfe34c;
+  color: aliceblue;
   outline: none; /* Remove the default blue outline */
 }
 @media (max-width: 1230px) {
@@ -138,7 +142,7 @@ a[data-tooltip]:hover::before {
   }
   .search:hover input {
     position: absolute;
-    bottom: 0px; 
+    bottom: -7px; 
     left: -3px; 
   }
 }

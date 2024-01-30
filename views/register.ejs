@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title><%= title %></title>
     <link rel="icon" href="../public/pictures/Pulp.webp">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../public/title.css">
@@ -17,16 +17,31 @@
     <%- include("./components/nav-bar.ejs")%>
     <div class="hr"></div>
 
-    <div class="register container gap-from-top">
-        <h4>Welcome to Registration!</h4>
-            <div><label><span>Username</span><input type="text" id="username"></label></div>
-            <div><label><span>Birth date</span><input type="date" id="birth-date"></label></div>
-            <div><label><span>Password</span><input type="password" id="password"></label></div>
-            <div><label><span>Email</span><input type="email" id="email"></label></div>
-            <div><span>Photo</span><input type="file" id="profile-photo" accept=".jpeg, .png, .gif, .bmp"></div>
-            <button class="register-button">Register</button>
-    </div>  
-    
+    <div class="container gap-from-top">
+        <div class="register">
+            <div class="image-container">
+                <img src="../public/pictures/poster.jpg" alt="Dance">
+            </div>
+            <div class="register-form">
+                <h4 class="title-account">Sing In</h4>
+                <div><label><span>Username</span><input type="text" id="username"></label></div>
+                <div><label><span>Birth date</span><input type="date" id="birth-date"></label></div>
+                <div><label><span>Password</span><input type="password" id="password"></label></div>
+                <div><label><span>Email</span><input type="email" id="email"></label></div>
+                <!-- <div><span>Photo</span><input type="file" id="profile-photo" accept=".jpeg, .png, .gif, .bmp"></div> -->
+                <div class="file-input-container">
+                    <span class="photo">Photo</span>
+                    <label for="profile-photo" class="custom-file-input">Choose File</label>
+                    <input type="file" id="profile-photo" accept=".jpeg, .png, .gif, .bmp">
+                    <div class="selected-file-container">
+                        <span id="selected-file-name">No file selected</span>
+                    </div>
+                </div>
+                <button class="register-button">Register</button>
+                <div class="standart-link"><a href="/login">Already have an account?</a></div>
+            </div>
+        </div>
+    </div>
     <script src="../public/register.js"></script>
     <script src="../public/index.js"></script>
 </body>

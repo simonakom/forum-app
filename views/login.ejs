@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" href="../public/pictures/Pulp.webp">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../public/title.css">
+    <link rel="stylesheet" href="../public/nav-bar.css">
+    <link rel="stylesheet" href="../public/grid.css">
+    <link rel="stylesheet" href="../public/form.css">
+</head>
+<body>
+    <%- include("./components/title.ejs")%>
+    <div class="hr"></div>
+    <%- include("./components/nav-bar.ejs")%>
+    <div class="hr"></div>
+
+
+
+    <div class="container gap-from-top">
+        <form
+            action="/api/user/login"
+            method="post"
+        >
+            <div>
+                <label>
+                    <span>Prisijungimo vardas</span>
+                    <input
+                        type="text"
+                        name="loginName"
+                    />
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span>Slaptažodis</span>
+                    <input
+                        type="password"
+                        name="password"
+                    />
+                </label>
+            </div>
+            <div>
+                <a
+                    href="/register"
+                    class="standart-link"
+                    >Still don't have an account?</a
+                >
+            </div>
+            <button class="standart-button">Prisijungti</button>
+        </form>
+    </div>
+
+
+
+    <script src=""></script>
+    <script src="../public/index.js"></script>
+</body>
+</html>

@@ -44,4 +44,18 @@ router.get ("/users", async (req, res) => {
 
 })
 
+router.post("/login", async (req, res) => {
+    res.json({message: "will implement in future"})
+});
+
+router.post("/logout", async (req, res) => {
+    res.json({message: "will implement in future"})
+});
+
+router.get("/check-session", async (req, res) => {
+	res.json({ message: "will implement in future" });
+});
+
+
+
 module.exports = router;

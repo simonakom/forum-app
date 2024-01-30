@@ -15,10 +15,10 @@ publicRouter.use(express.static("public"));
 
 app.use(express.json()); //middleware skirtas gauti JSON formato duomenys is kliento
 
+
+
 //Tarpinio route panaudojimas: http://localhost/public/ --> This line integrates the publicRouter into the main Express application (app). It specifies that any request to the "/public" path should be handled by the publicRouter. The publicRouter is configured to serve static files from the "public" directory.
 app.use("/public", publicRouter); 
-
- 
 // Routs of pages
 app.use (pagesRouter); 
 // Routs of user
