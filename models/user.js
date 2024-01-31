@@ -45,8 +45,12 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
     dislikes: {
         type: Number,
         default : 0,
-    }
-
+    },
+    admin: {
+        type: Boolean,
+        default: false,
+        required: true,
+    },
 });
 
 const model = mongoose.model("user", schema) //kurdami modeli yra panaudojama schema

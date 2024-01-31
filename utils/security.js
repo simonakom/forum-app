@@ -15,8 +15,8 @@ function generateSalt() {  //sugeneruoja random hex bitus kurie naudojami kartu 
 }
 
  //playginti ar pateiktas slaptazodis atitinka uzhašuota (hash) slaptazpdi
-function isValidCredentials(providedPassword, salt, hashPassword) { //providedPassword- is vartotojo, salt- is db, haspassword- is db.
-	return hashPassword(providedPassword, salt) === hashPassword; //tikrinama ar prisijungimo duomenys tinka. " === hashPassword" - slaptazpdis kuris issaugotas duomenu bazeje
+function isValidCredentials(providedPassword, salt, hashedPassword) { //providedPassword- is vartotojo, salt- is db, haspassword- is db.
+	return hashPassword(providedPassword, salt) === hashedPassword; //tikrinama ar prisijungimo duomenys tinka. " === hashPassword" - slaptazpdis kuris issaugotas duomenu bazeje
 }
 
 module.exports = {

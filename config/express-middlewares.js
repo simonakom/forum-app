@@ -1,6 +1,9 @@
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require ("connect-mongo") //dazniausiai sesijos saugomos serverio atmintyje, o jei app dideles tada db. Modulis kuris ikelia sesijas i db:  npm i connect-mongo. Jo instaliacija: npm i connect-mongo
 const pagesRouter = require("../routes/pages") //gaunamas pages.js //naudojamas kaip middleware
-const userRouter = require("../routes/user-router") //gaunamas user-router.js //naudojamas kaip middleware
+const userRouter = require("../routes/user-router"); //gaunamas user-router.js //naudojamas kaip middleware
+const bodyParser = require('body-parser');//instaliuoti npm i body-parser: gauna duomenys if frontedn pasinaudojus pacipmis formomis
 
 
 function config(app) {
@@ -15,6 +18,23 @@ publicRouter.use(express.static("public"));
 
 app.use(express.json()); //middleware skirtas gauti JSON formato duomenys is kliento
 
+
+app.use(bodyParser.urlencoded());//bodyParser
+
+
+app.use(session({ //sesiju nustatymai reikalingi loginui
+    secret: process.env.SESSIONS_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({//sesiju saugojimui duomenu bazeje.
+        mongoUrl: require("./db-connect").mongoUrl,  //url su kuriuo prisijungiama prie db naudojant sesijas: mongodb+srv://__DB_USER:__DB_PASSWORD@__DB_HOST/__DB_NAME  
+        collectionName: "sessions" //db kolecijos pavadinimas saugojimui sesijoms
+    }),
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7, // sesija saugojama savaite nuo user atsijungimo
+        },
+    })
+);
 
 
 //Tarpinio route panaudojimas: http://localhost/public/ --> This line integrates the publicRouter into the main Express application (app). It specifies that any request to the "/public" path should be handled by the publicRouter. The publicRouter is configured to serve static files from the "public" directory.
