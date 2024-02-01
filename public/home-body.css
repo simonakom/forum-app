@@ -8,11 +8,26 @@
     color: aliceblue;
   }
   .gap-from-top {
-    margin-top: 90px;
+    margin-top: 45px;
+  }
+
+  .welcomeMessage {
+    font-size: 20px;
+    margin: 40px 10px;
+    color: rgb(158, 161, 164);
   }
  
   h4 {
     font-weight: 100;
+    font-size: 15px;
+    margin-left: 20px;
+  }
+  h4 a{
+    margin-left: 6px
+  }
+  .bi-box-arrow-in-right:hover {
+  font-size: 20px;
+  transition: 0.1s ease; 
   }
 
   /* table */
@@ -128,3 +143,13 @@
   .last-post  {
     margin-top: 1rem;
   }
+  .message {
+    background-image: linear-gradient(135deg, #4d9b4f64 0%, rgba(24, 103, 36, 0) 100%);
+    min-width: 330px;
+    word-wrap: break-word;
+    color: rgb(201, 230, 219);
+    border-radius: 13px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 15px;
+}

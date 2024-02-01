@@ -21,9 +21,10 @@
         <div class="login">
             <form action="/api/user/login" method="post">
                 <h4 class="title-account">Log In</h4>
+                <%- include("./components/errorMessage.ejs") %>
                 <div>
                     <label>
-                        <span>Username</span><input type="text" name="loginName"/>
+                        <span>Username or Email</span><input type="text" name="loginName"/>
                     </label>
                 </div>
                 <div>

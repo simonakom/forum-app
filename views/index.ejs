@@ -17,14 +17,18 @@
     <%- include("./components/nav-bar.ejs")%>
     <div class="hr"></div>
 
-
-	<!-- CONTENT -->
     <div class="container gap-from-top">
-        <% if(!username) {%>
-            <h4>Please, log in</h4>
-        <% }else {%>
-            <h4>Welcome, <%= username %></h4>
-        <% } %>
+		<div class="welcomeMessage">
+		<% if(!username) { %>
+			<h4><i>Log in to access the full range of forum services</i> 		
+				<a href="/login"><i class="bi bi-box-arrow-in-right"></i></a>
+			</h4>
+		<% } else { %>
+			<h4>Welcome onboard, <a href="/my-profile"> <%= username %>!</a></h4>
+		<% } %>
+		<%- include("./components/infoMessage.ejs") %>
+		
+		</div>
 		<table>
 			<thead>
 				<tr>

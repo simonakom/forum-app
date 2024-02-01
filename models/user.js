@@ -1,25 +1,24 @@
 //aprasyti user schemai
-
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "schema" - generuojamas naujas objektas  (paduodamas i konstruktoriu)
     username: {
         type: String,
         required: true,
-        minLenght: 5,
-        maxLenght: 50
+        minLength: 5,
+        maxLength: 50
     },
     email: {
         type: String,
         required: true,
-        minLenght: 8,
-        maxLenght: 120,
+        minLength: 8,
+        maxLength: 50,
     },
     password: {
         type: String,
         required: true,
-        minLenght: 8,
-        maxLenght: 120
+        minLength: 8,
+        maxLength: 120
     },
     salt: String,
     birthDate: {
@@ -51,6 +50,11 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
         default: false,
         required: true,
     },
+    registrationDate: { //vartotojui priskirta regitracijos data
+        type: Date,
+        default: new Date(), 
+        required: true,
+    }
 });
 
 const model = mongoose.model("user", schema) //kurdami modeli yra panaudojama schema
