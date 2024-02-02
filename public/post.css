@@ -56,6 +56,9 @@
 .post {
   color: #060607;
 }
+.post input {
+  font-size: 20px;
+}
 .post input::placeholder {
   color: #121219;
   font-size: 20px;
