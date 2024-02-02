@@ -17,19 +17,19 @@ router.post ("/register", upload.single("img"), async (req, res) => {  //duomenu
     const fileName = require ("../config/multer.js").lastFileName; //gaunamas ikelto failo pavadinimas registracijos metu
     // console.log(fileName);
 
-    // res.json ({message: "success"}) 
-
     if (!username || !email || !password || !birthDate) {
        return res.redirect("/register?error=Please, fill all fields !")
     }
 
-    //Patikrinti ar vartotojo username bei email laukeliai yra unikalus
-		// await UserModel.find({_id: id}) gaunamas masyvas
-		// await UserModel.findOne({_id: id}) gaunamas vienas irasas
+    const validationResult = validate(req.body)
+    if (validationResult !== "Successfully registered!") { //turi buti toks pats kaip uservalidation.js
+        return res.redirect("/register?error=" + validationResult);
+    }
 
+    //Patikrinti ar vartotojo username bei email laukeliai yra unikalus:// await UserModel.find({_id: id}) gaunamas masyvas // await UserModel.findOne({_id: id}) gaunamas vienas irasas
          // Check if the username is already taken
          const existingUsername = await UserModel.findOne({ username });
-         if (existingUsername) {
+         if (existingUsername) { 
              return res.redirect("/register?error=Username already exists!");
          }
          // Check if the email is already taken
@@ -52,10 +52,7 @@ router.post ("/register", upload.single("img"), async (req, res) => {  //duomenu
         birthDate,
         profilePicture: `/public/images/${fileName}`,
     }
-    const validationResult = validate(newUserObj)
-    if (validationResult !== "Successfully registered !") {
-        return res.redirect("/register?error=" + validationResult);
-    }
+
 
     const newUser = new UserModel(newUserObj);
     await newUser.save(); //kad issaugoti user db
@@ -88,7 +85,6 @@ router.get ("/users", async (req, res) => {
 })
 
 //-------------------------------log in----------------------------------//
-
 
 router.post("/login", async (req, res) => {
     const {loginName, password} = req.body;

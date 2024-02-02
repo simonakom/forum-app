@@ -1,10 +1,10 @@
 //siunciama su froma i db:
-// const usernameInput = document.querySelector("#username");
-// const birthDateInput = document.querySelector("#birth-date");
-// const passwordInput = document.querySelector("#password");
-// const emailInput = document.querySelector("#email");
-// const profilePhoto = document.querySelector("#profile-photo");
-// const registerButton = document.querySelector(".register-button");
+const usernameInput = document.querySelector("#username");
+const birthDateInput = document.querySelector("#birth-date");
+const passwordInput = document.querySelector("#password");
+const emailInput = document.querySelector("#email");
+const profilePhoto = document.querySelector("#profile-photo");
+const registerButton = document.querySelector(".register-button");
 
 // registerButton.onclick = async () => {
 

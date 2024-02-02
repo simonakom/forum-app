@@ -148,3 +148,6 @@ input:-webkit-autofill:active {
 }
 
 
+input::placeholder{
+    color: rgb(175, 179, 183);
+}

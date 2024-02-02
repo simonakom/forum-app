@@ -27,7 +27,6 @@
 			<h4>Welcome onboard, <a href="/my-profile"> <%= username %>!</a></h4>
 		<% } %>
 		<%- include("./components/infoMessage.ejs") %>
-		
 		</div>
 		<table>
 			<thead>
@@ -39,22 +38,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
-				<%- include('./components/table-row.ejs') %> 
+				<% for (const post of posts) { %>
+					<%- include('./components/table-row.ejs', { post }) %>
+				<% } %>		
 			</tbody>
 		</table>
 		<br><br>

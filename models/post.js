@@ -4,13 +4,13 @@ const mongoose = require("mongoose");
 const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "schema" - generuojamas naujas objektas  (paduodamas i konstruktoriu)
     title: {
 		type: String,
-		minLength: 8,
-		maxLength: 70,
+		minLength: 6,
+		maxLength: 150,
 		required: true,
 	},
 	content: {
 		type: String,
-		minLength: 20,
+		minLength: 10,
 		required: true,
 	},
 	anonymousViewsCount: {

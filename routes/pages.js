@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router(); //statine funkcija klaseje express
-const UserModel = require("../models/user"); //norint dirbti su duomenimis is db
+const UserModel = require("../models/user"); //norint dirbti su duomenimis is db (gauti users)
+const PostModel = require("../models/post"); //norint dirbti su duomenimis is db (gauti posts)
+
 
 //------------------------------------------------- main endpoint------------------------------------------------------//
 router.get ("/", async (req, res) => { //index.ejs failo atvaizdavimas iš views aplanko
@@ -13,12 +15,15 @@ if (req.session.user?.loggedIn) { // Check if the user is logged in and fetch us
 		console.error("Error fetching user data:", error);
 	}
 }
+
+const posts = await PostModel.find({});
     const config = {
         title: "PulpCinemaHub",
         username: userData?.username || null,
         activeTab: "Home",
         loggedIn:!!req.session.user?.loggedIn, // ? reiksia kad reiksme gali buti ir ne (undefined) kuria vistiek imsime
-		message: req.query.message //is parametru pasiimti zinute //http://localhost:3000/?message=error
+		message: req.query.message, //is parametru pasiimti zinute //http://localhost:3000/?message=error
+		posts: posts
     }
 
 	res.render("index", config); //Kartu paduodami ir parametrai EJS failui
@@ -55,7 +60,7 @@ router.get("/login", (req, res) => {
 //------------------------------------------------- profile endpoint------------------------------------------------------//
 
 router.get("/my-profile", async (req, res) => {
-	if (!req.session.user?.loggedIn) { //tikrinama jei neprisijunges ir redirectinamama i login 
+	if (!req.session.user?.loggedIn) { //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
 		return res.redirect("/login?error=Please, log in first!");
 	}
 	//gauti duomenys is db ir atvaizduoti profilyje
@@ -80,5 +85,20 @@ router.get("/my-profile", async (req, res) => {
 	res.render("profile", config);
 });
 
+//------------------------------------------------- post endpoint------------------------------------------------------//
+
+router.get ("/new-post", async (req, res) => { 
+	if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
+		return res.redirect("/login?error=Please, log in first!");
+	}
+
+		const config = {
+			title: "PulpCinemaHub - new post",
+			activeTab: "",
+			loggedIn:!!req.session.user?.loggedIn, 
+			error: req.query.error, //http://localhost:3000/new-post?error=error
+		}
+		res.render("new-post", config); 
+	});
 
 module.exports = router;  

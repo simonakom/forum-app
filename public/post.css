@@ -1,0 +1,367 @@
+
+
+@import url(https://db.onlinewebfonts.com/c/15b543784a28c07ac981cee1d665fbb3?family=RamaSlabMW01-Heavy);
+
+
+
+.error {
+  width: 90%;
+  font-size: 14px;
+  word-wrap: break-word;
+  background-image: linear-gradient(135deg, #5a152eba 0%, rgba(103, 24, 78, 0.218) 100%);
+  color: rgba(240, 248, 255, 0.845);
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+.container {
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100% !important;
+  font-size: 30px;
+  font-weight: 200;
+  font-family:Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: aliceblue;
+
+  background-image: url("../public/pictures/chairs.jpg") ;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.bg-frame {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+
+  background-color: #19181899;
+  padding: 40px 70px;
+  margin: 40px 20px;
+  border-radius: 30px;
+  max-width: 50%;
+  z-index: 999; 
+}
+
+
+.gap-from-top {
+  padding-top: 60px;
+}
+.post {
+  color: #060607;
+}
+.post input::placeholder {
+  color: #121219;
+  font-size: 20px;
+}
+ #preview {
+  font-size: 20px;
+  overflow-y:hidden;
+  word-wrap: break-word;
+ }
+ fieldset {
+  background-color: #2f283685;
+ }
+
+
+/* button */
+.register-button{
+  background-color: #1b0f1c;
+  color: aliceblue;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 20px;
+  box-shadow: 1px 0px 4px rgba(164, 200, 232, 0.539);
+}
+.register-button:hover{
+  background-color: rgb(24, 15, 24);
+  text-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
+  font-size: 13px; 
+  transition: 0.1s ease; 
+}
+
+fieldset {
+  margin-bottom: 50px !important;
+  padding-bottom: 20px !important;
+  color: aliceblue;
+}
+legend{
+  font-size: 20px;
+}
+
+/* new title as tailwind overriding title.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: rgb(233, 214, 227);
+  background-image: linear-gradient(0deg, #2f2836 2%,  #060607 100%);
+  background-size: cover;
+  background-attachment: fixed; 
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+/* Title */
+.intro {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+img {
+  width: 160px; 
+  height: auto;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 20px;
+}
+.title {
+  color: #fdd808;
+  font-family: RamaSlabMW01-Heavy, "Courier New", Courier, monospace;
+  font-size: 70px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-shadow: -2px 3px 2px #f9341e;
+  margin-right: 20px;
+  /* changed */
+  margin-top: 35px; 
+}
+.description {
+  display: block;
+  color: rgb(129, 121, 131);
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  margin-right: 20px;
+  text-shadow: -2px 1px 5px rgb(87, 81, 81);
+  /* changed */
+  margin-top: -18px;
+}
+@media (max-width: 550px) {
+  .title {
+    font-size: 50px;
+  }
+  .description {
+    font-size: 20px;
+  }
+  img {
+    width: 130px; 
+  }
+  .intro {
+    height: 170px;
+  }
+}
+@media (max-width: 420px) {
+  .title {
+    font-size: 45px;
+    margin-top: 55px;
+  }
+  .description {
+   display: none;
+  }
+  img {
+    width: 120px; 
+    margin-right: 5px;
+    margin-left: 10px;
+  }
+  .intro {
+    height: 150px;
+  }
+}
+@media (max-width: 348px) {
+  .title {
+    font-size: 30px;
+    margin-top: 55px;
+  }
+  img {
+    width: 110px; 
+    margin-right: 5px;
+    margin-left: 10px;
+  }
+  .intro {
+    height: 135px;
+  }
+}
+
+/* new navbar as tailwind overriding nav-bar.css */
+
+
+@import url(https://db.onlinewebfonts.com/c/15b543784a28c07ac981cee1d665fbb3?family=RamaSlabMW01-Heavy);
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: rgb(233, 214, 227);
+  background-image: linear-gradient(0deg, #2f2836 2%,  #060607 100%);
+  background-size: cover;
+  background-attachment: fixed; 
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nav {
+	transition:   background-image 0.3s;
+	position: sticky;
+	top: 0px;
+  /* changed */
+  height: 59px;
+  padding: 12px 20px 5px 20px;
+  z-index: 1000; 
+}
+
+.right-links-logo a {
+  display: none; 
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 85%;
+  min-height: 35%;
+}
+.hr {
+  height: 1px;
+  background: linear-gradient(to right, #5da5c971, #d494de68, #395a8483, #d494de68, #5da5c971);
+  width: 100%; 
+  margin: 0 auto;
+  box-shadow: 0px 0px 3px rgba(164, 200, 232, 0.539);
+}
+.left-links {
+  display: flex;
+  align-items: center;
+  gap: 30px
+}
+.right-links {
+  color: al;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.frame {
+  background-color: #2f2836;
+  padding: 3px 20px 6px 20px;
+  border-radius: 30px;
+  margin: 0;
+}
+.right-links a:hover {
+  color: aliceblue;
+  font-size: 19px;
+  text-shadow: none;
+  /* font-size: 27px;  */
+  /* transition: color 0.1s ease; */
+}
+a {
+  color: #fdd808;
+  font-size: 20px;
+  text-decoration: none;
+  margin-right: 10px;
+    /* changed */
+    margin-bottom: 8px;
+}
+a:visited {
+    color: #fdd808;
+}
+a:hover {
+  /* color: #c082b7da; */
+  color: aliceblue;
+  text-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
+  font-size: 18px; 
+  transition: font-size 0.1s ease; 
+}
+a[data-tooltip]:hover::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  background-color: #2f2836;
+  color: aliceblue;
+  text-shadow: none;
+  padding: 5px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top: 35px;
+  white-space: nowrap;
+}
+.search {
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.search i {
+  color: #fdd808;
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+.search input {
+  width: 350px;
+  /* changed */
+  padding: 7px 25px;
+  border: none;
+  border-radius: 30px;
+  background-color: #dfcfe32f;
+  box-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
+  color: antiquewhite;
+  /* changed */
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.search input::placeholder {
+  color: rgba(250, 235, 215, 0.559);
+}
+.search input:focus {
+  background-color: #dfcfe34c;
+  color: aliceblue;
+  outline: none; /* Remove the default blue outline */
+}
+@media (max-width: 1230px) {
+  .search {
+    flex-direction: column; 
+  }
+  .search input {
+    display: none; 
+    background-color: #323034;
+  }
+  .search input:focus {
+    background-color: #323034;
+    color: #fdd808;
+    outline: none; 
+  }
+  .search:hover input {
+    display: block; 
+  }
+  .left-links {
+    position: relative; 
+  }
+  .search:hover input {
+    position: absolute;
+    bottom: -7px; 
+    left: -3px; 
+  }
+}
+@media (max-width: 730px) {
+  .right-links a {
+    display: none; 
+  }
+  .right-links-logo {
+    display: flex;
+    flex-direction: row;
+  }
+  .right-links-logo a {
+    display: block; 
+    font-size: 32px;
+  }
+}
+
+
+
+

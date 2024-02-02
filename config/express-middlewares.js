@@ -40,6 +40,9 @@ app.use(session({ //sesiju nustatymai reikalingi loginui
 
 //Tarpinio route panaudojimas: http://localhost/public/ --> This line integrates the publicRouter into the main Express application (app). It specifies that any request to the "/public" path should be handled by the publicRouter. The publicRouter is configured to serve static files from the "public" directory.
 app.use("/public", publicRouter); 
+
+app.use("/tinymce", express.static("node_modules/tinymce"))
+
 // Routs of pages
 app.use (pagesRouter); 
 

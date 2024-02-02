@@ -1,5 +1,4 @@
 
-@import url(https://db.onlinewebfonts.com/c/15b543784a28c07ac981cee1d665fbb3?family=RamaSlabMW01-Heavy);
 
 body {
   margin: 0;
@@ -16,6 +15,8 @@ nav {
 	transition:   background-image 0.3s;
 	position: sticky;
 	top: 0px;
+  height: 42px;
+  padding: 12px 20px 5px 20px;
 }
 
 .right-links-logo a {
@@ -36,10 +37,7 @@ nav {
   margin: 0 auto;
   box-shadow: 0px 0px 3px rgba(164, 200, 232, 0.539);
 }
-nav {
-  height: 42px;
-  padding: 12px 20px 5px 20px;
-}
+
 .left-links {
   display: flex;
   align-items: center;

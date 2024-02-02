@@ -37,70 +37,35 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-	//Naujo įrašo sukūrimas
+	const { title, content } = req.body;
+	const authorId = req.session.user.id;
+
+	if (!title || !content ) {
+		return res.redirect("/new-post?error=Please, fill all fields!")
+	}
+
+	const validationResult = validate(req.body)
+    if (validationResult !== "Successfully registered!") { //turi buti toks pats kaip postvalidation.js
+        return res.redirect("/new-post?error=" + validationResult);
+    }
+ 
+	// Išsaugojimas duombazėje
+	const newPost = new PostModel({
+		title,
+		content,
+		authorId,
+	});
+
+	await newPost.save();
+	res.redirect("/?message=New post was successfully created!");
 });
 
-// router.post("/", upload.single("image"), async (req, res) => {
-//     // Naujo įrašo sukūrimas
-
-//     try {
-//         // Validacijos žingsnis pagal sukurtą validacijos funkciją
-//         const validationResult = validate(req.body);
-//         if (validationResult.error) {
-//             return res.status(400).json({ message: validationResult.error.details[0].message });
-//         }
-
-//         const newPost = new PostModel({
-//             title: req.body.title,
-//             content: req.body.content,
-//             authorId: req.session.user.id,
-//             // Pridedame failo pavadinimą, kurį grąžina multer middleware
-//             imageUrl: req.file ? req.file.filename : null,
-//         });
-
-//         await newPost.save();
-
-//         res.status(201).json({ message: "Post created successfully", post: newPost });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: "Internal server error" });
-//     }
-// });
 
 
 router.put("/", async (req, res) => {
 	//Įrašo atnaujinimas
 });
 
-// router.put("/:id", async (req, res) => {
-//     // Įrašo atnaujinimas
 
-//     try {
-//         const post = await PostModel.findOne({ _id: req.params.id });
-//         if (!post) {
-//             return res.status(404).json({ message: "Post not found" });
-//         }
-
-//         if (post.authorId !== req.session.user.id && !req.session.user.admin) {
-//             return res.status(403).json({ message: "Jūs neturite teisės atnaujinti šio įrašo" });
-//         }
-
-//         // Validacijos žingsnis pagal sukurtą validacijos funkciją
-//         const validationResult = validate(req.body);
-//         if (validationResult.error) {
-//             return res.status(400).json({ message: validationResult.error.details[0].message });
-//         }
-
-//         post.title = req.body.title;
-//         post.content = req.body.content;
-
-//         await post.save();
-
-//         res.status(200).json({ message: "Post updated successfully", post });
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ message: "Internal server error" });
-//     }
-// });
 
 module.exports = router;
