@@ -1,21 +1,4 @@
-
-
 @import url(https://db.onlinewebfonts.com/c/15b543784a28c07ac981cee1d665fbb3?family=RamaSlabMW01-Heavy);
-
-
-
-.error {
-  width: 90%;
-  font-size: 14px;
-  word-wrap: break-word;
-  background-image: linear-gradient(135deg, #5a152eba 0%, rgba(103, 24, 78, 0.218) 100%);
-  color: rgba(240, 248, 255, 0.845);
-  border-radius: 15px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin-bottom: 10px;
-  align-self: center;
-}
 
 .container {
   margin: 0 auto;
@@ -35,7 +18,6 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
 .bg-frame {
   display: flex;
   text-align: center;
@@ -48,8 +30,6 @@
   max-width: 50%;
   z-index: 999; 
 }
-
-
 .gap-from-top {
   padding-top: 60px;
 }
@@ -71,8 +51,6 @@
  fieldset {
   background-color: #2f283685;
  }
-
-
 /* button */
 .register-button{
   background-color: #1b0f1c;
@@ -91,7 +69,7 @@
   font-size: 13px; 
   transition: 0.1s ease; 
 }
-
+/* fieldset */
 fieldset {
   margin-bottom: 50px !important;
   padding-bottom: 20px !important;
@@ -101,8 +79,26 @@ legend{
   font-size: 20px;
 }
 
-/* new title as tailwind overriding title.css */
+.error {
+  width: 90%;
+  font-size: 14px;
+  word-wrap: break-word;
+  background-image: linear-gradient(135deg, #5a152eba 0%, rgba(103, 24, 78, 0.218) 100%);
+  color: rgba(240, 248, 255, 0.845);
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+  align-self: center;
+}
 
+
+
+
+
+
+
+/* new title as tailwind overriding title.css */
 body {
   margin: 0;
   padding: 0;
@@ -113,7 +109,6 @@ body {
   background-attachment: fixed; 
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-/* Title */
 .intro {
   display: flex;
   flex-direction: row;
@@ -195,10 +190,6 @@ img {
 }
 
 /* new navbar as tailwind overriding nav-bar.css */
-
-
-@import url(https://db.onlinewebfonts.com/c/15b543784a28c07ac981cee1d665fbb3?family=RamaSlabMW01-Heavy);
-
 body {
   margin: 0;
   padding: 0;
