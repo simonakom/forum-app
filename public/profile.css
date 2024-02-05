@@ -84,7 +84,7 @@
 
 /* button */
 .standart-button{
-    background-color: #1b0f1c;
+	background-color: #b99b06e9;
     color: aliceblue;
     border: none;
     border-radius: 6px;
@@ -92,10 +92,10 @@
     cursor: pointer;
     font-size: 14px;
     margin-top: 20px;
-    box-shadow: 1px 0px 4px rgba(164, 200, 232, 0.539);
+    box-shadow: 0px 0px 4px rgba(164, 200, 232, 0.539);
 }
 .standart-button:hover{
-    background-color: rgb(24, 15, 24);
+	background-color: #b29006d2;
     text-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
     font-size: 13px; 
     transition: 0.1s ease; 

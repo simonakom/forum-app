@@ -30,8 +30,12 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
 	},
 	authorId: {
 		type: mongoose.Schema.Types.ObjectId, //object reference - duomenu tipas skirtas id
-		ref: "user", //user model
+		ref: "user",  // objektas is user model
 		required: true,
+	},
+	author: {
+		type: Object,
+		ref: "user",  // objektas is user model
 	},
 	likesCount: {
 		type: Number,

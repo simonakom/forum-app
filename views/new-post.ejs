@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../public/grid.css">
     <link rel="stylesheet" href="path/to/tailwind.css">
-    <link rel="stylesheet" href="../public/post.css">
+    <link rel="stylesheet" href="../public/new-post.css">
 </head>
 <body>
     <%- include("./components/title.ejs")%>
@@ -21,7 +21,7 @@
             <form action="/api/post" method="post">
                 <input type="text" name="title" placeholder="Post title here..." class="inline-block my-4 outline-none w-full rounded py-2 px-4"/>
                 <textarea name="content" id="text-editor" placeholder="Type post content here..." cols="30" rows="10" class="outline-none rounded py-2 px-4"></textarea>
-                <button class="register-button my-5">Register</button>
+                <button class="register-button my-5">Create post</button>
             </form>
             <fieldset class="border border-gray-400 rounded-3xl">
                 <legend>Post preview</legend>

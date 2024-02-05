@@ -19,11 +19,12 @@
  
   h4 {
     font-weight: 100;
-    font-size: 15px;
+    font-size: 16px;
     margin-left: 20px;
   }
   h4 a{
-    margin-left: 6px
+    margin-left: 6px;
+    font-size: 18px;
   }
   .bi-box-arrow-in-right:hover {
   font-size: 20px;
@@ -50,7 +51,7 @@
   }
   .round-left {
     border-top-left-radius: 30px;
-    padding-left: 8rem;
+    padding-left: 6rem;
   }
   .round-right {
     border-top-right-radius: 30px;
@@ -94,7 +95,7 @@
     padding: 0.5rem 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content:space-around;
   }
   .topic-details a:hover {
     text-decoration: underline;
@@ -109,7 +110,7 @@
     width: fit-content;
     text-align: center;
     padding: 0.5rem;
-    margin-right: 50px;
+    margin: 20px;
     font-size: 20px;
   }
   .author-outline {
@@ -153,3 +154,14 @@
     cursor: pointer;
     font-size: 15px;
 }
+
+  .error {
+    background-image: linear-gradient(135deg, #5a152e93 0%, rgba(103, 24, 78, 0.106) 100%);
+    min-width: 330px;
+    word-wrap: break-word;
+    color: rgba(240, 248, 255, 0.705);
+    border-radius: 13px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 15px;
+  }

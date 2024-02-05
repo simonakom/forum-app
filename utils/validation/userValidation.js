@@ -5,10 +5,8 @@ function validate(user) {
 	const passwordValidation = validatePassword(user.password);
     if (!passwordValidation.isValid) return passwordValidation.message;
 
-
 	const emailValidation = validateEmail(user.email);
     if (!emailValidation.isValid) return emailValidation.message;
-
 
 	return "Successfully registered!";
 }
@@ -46,6 +44,26 @@ function validatePassword(password) {
         return {
             isValid: false,
             message: "Password must be up to 50 characters",
+        };
+    } else if (!/[A-Z]/.test(password)) {
+        return {
+            isValid: false,
+            message: "Password must contain at least one uppercase letter",
+        };
+    } else if (!/[a-z]/.test(password)) {
+        return {
+            isValid: false,
+            message: "Password must contain at least one lowercase letter",
+        };
+    } else if (!/\d/.test(password)) {
+        return {
+            isValid: false,
+            message: "Password must contain at least one number",
+        };
+    } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        return {
+            isValid: false,
+            message: "Password must contain at least one symbol",
         };
     }
 

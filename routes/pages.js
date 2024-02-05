@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router(); //statine funkcija klaseje express
 const UserModel = require("../models/user"); //norint dirbti su duomenimis is db (gauti users)
 const PostModel = require("../models/post"); //norint dirbti su duomenimis is db (gauti posts)
+const postModifications = require("../utils/postModifications")
 
 
-//------------------------------------------------- main endpoint------------------------------------------------------//
+//------------------------------------------------- home endpoint------------------------------------------------------//
 router.get ("/", async (req, res) => { //index.ejs failo atvaizdavimas iš views aplanko
 
 let userData; //variable is declared before the try block,
@@ -16,14 +17,16 @@ if (req.session.user?.loggedIn) { // Check if the user is logged in and fetch us
 	}
 }
 
-const posts = await PostModel.find({});
+	const posts = await postModifications.getPostsWithAuthors(); //irasu gavimas is db ir ju modifikavimas
+
     const config = {
+		activeTab: "Home",
         title: "PulpCinemaHub",
         username: userData?.username || null,
-        activeTab: "Home",
         loggedIn:!!req.session.user?.loggedIn, // ? reiksia kad reiksme gali buti ir ne (undefined) kuria vistiek imsime
 		message: req.query.message, //is parametru pasiimti zinute //http://localhost:3000/?message=error
-		posts: posts
+		error: req.query.error, 
+		posts,
     }
 
 	res.render("index", config); //Kartu paduodami ir parametrai EJS failui
@@ -94,11 +97,42 @@ router.get ("/new-post", async (req, res) => {
 
 		const config = {
 			title: "PulpCinemaHub - new post",
-			activeTab: "",
+			activeTab: "Post",
 			loggedIn:!!req.session.user?.loggedIn, 
 			error: req.query.error, //http://localhost:3000/new-post?error=error
 		}
 		res.render("new-post", config); 
 	});
 
-module.exports = router;  
+//------------------------------------------------- get post by id endpoint------------------------------------------------------//
+
+
+	router.get("/post/:id", async (req, res) => {
+		if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
+			return res.redirect("/login?error=Please, log in first!");
+		}
+		
+		try {
+			const post = await PostModel.find({ _id: req.params.id });
+			const user = await UserModel.findOne({ _id: "65c12264203af4085f4812a3" });
+			console.log(post);
+			const config = {
+				title: "PulpCinemaHub - post",
+				activeTab: "",
+				loggedIn: !!req.session.user?.loggedIn,
+				post,
+				user,
+			};
+			res.render("post", config);
+		} catch (err) {
+			res.redirect("/?error=Post not found");
+		}
+	});
+ 
+	module.exports = router;
+
+//------------------------------------------------- get profile by id endpoint------------------------------------------------------//
+
+// router.get("/profile/:id", async (req, res) => {
+// 	const user = await UserModel.find({ _id: req.params.id });
+// });
