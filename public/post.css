@@ -72,13 +72,18 @@
 /* fieldset */
 fieldset {
   margin-bottom: 50px !important;
-  padding-bottom: 20px !important;
+  padding: 2px 10px 10px 20px !important ; 
   color: aliceblue;
+  max-width: 500px;
 }
+
+fieldset div {
+  word-break: break-all;
+}
+
 legend{
   font-size: 20px;
 }
-
 .error {
   width: 90%;
   font-size: 14px;
