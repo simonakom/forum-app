@@ -6,13 +6,15 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
         type: String,
         required: true,
         minLength: 5,
-        maxLength: 50
+        maxLength: 50,
+        unique: true,
     },
     email: {
         type: String,
         required: true,
         minLength: 6,
         maxLength: 50,
+        unique: true,
     },
     password: {
         type: String,

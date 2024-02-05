@@ -19,7 +19,7 @@ function config() {
     const db = mongoose.connection;//kintamasis bus naudojamas su db
     
     //DB listeners kurie nusako ar prie DB buvo prisijungta sekmingai ar ne
-    db.on("err", (error) => {
+    db.on("error", (error) => {
     console.error("error: " + error);
     })
     db.once("open", () => {
