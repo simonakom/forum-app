@@ -1,22 +1,21 @@
 
 .container {
     margin: 0 auto;
-    width: 85%;
+    width: 83%;
     min-height: 35%;
     font-size: 30px;
     font-family:Arial, Helvetica, sans-serif;
     color: aliceblue;
+    margin-bottom: 30px;
   }
   .gap-from-top {
     margin-top: 40px;
   }
-
   .welcomeMessage {
     font-size: 20px;
     margin: 40px 10px;
     color: rgb(158, 161, 164);
   }
- 
   h4 {
     font-weight: 100;
     font-size: 16px;
@@ -30,7 +29,6 @@
   font-size: 20px;
   transition: 0.1s ease; 
   }
-
   /* table */
   p {
     margin: 0;
@@ -66,10 +64,9 @@
   tbody tr {
     border-bottom: 0.10px solid #b7b7b7;
   }
-  /* details */
+  /* table details */
   .post {
     display: flex;
-    /* gap: 1rem; */
   }
   .post img {
     width: 50px;
@@ -102,8 +99,7 @@
     text-shadow: none;
   }
   .single-number {
-    /* background-color: #c5a5ca78; */
-    /* border: 1px solid rgb(105, 108, 110); */
+    background-color: #c5a5ca44;
     border-radius: 15%;
     box-shadow: 0px 0px 2px rgba(164, 200, 232, 0.539);
     color: rgb(219, 209, 209);
@@ -145,7 +141,7 @@
     margin-top: 1rem;
   }
   .message {
-    background-image: linear-gradient(135deg, #4d9b4f64 0%, rgba(24, 103, 36, 0) 100%);
+    background-image: linear-gradient(135deg, #4d9b8964 0%, rgba(24, 103, 36, 0) 100%);
     min-width: 330px;
     word-wrap: break-word;
     color: rgb(201, 230, 219);
@@ -153,8 +149,7 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-size: 15px;
-}
-
+  }
   .error {
     background-image: linear-gradient(135deg, #5a152e93 0%, rgba(103, 24, 78, 0.106) 100%);
     min-width: 330px;

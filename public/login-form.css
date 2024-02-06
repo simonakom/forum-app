@@ -21,14 +21,14 @@
     text-align: center;
 }
 .login {
-    background-color: #dfcfe337;
-    margin-bottom: 10rem;
+    background-color: #4b4450;
+	margin-bottom: 100px;
     border-radius: 30px;
     display: flex;
     flex-direction: row;
     gap: 10px;
     height: 555px;
-    box-shadow: 1px 1px 16px rgba(164, 200, 232, 0.539);
+    box-shadow: 0px 0px 8px rgba(164, 200, 232, 0.539);
 }
 .image-container img {
     width: 550px;
@@ -54,7 +54,7 @@ label input {
     padding: 0.5rem;
     border-radius: 6px;
     border: 1px solid rgb(96, 91, 91);
-    background-color: #d1c1ce6c;
+    background-color: #b8aab66c;
     color: antiquewhite;
     margin-bottom: 10px;
 }
@@ -64,7 +64,7 @@ label input:focus {
     box-shadow: 0px 0px 7px rgba(164, 200, 232, 0.539);
 }
 .register-button{
-    background-color: #1b0f1c;
+    background-color: #1b0f1cdd;
     color: aliceblue;
     border: none;
     border-radius: 6px;
@@ -72,7 +72,7 @@ label input:focus {
     cursor: pointer;
     font-size: 14px;
     margin-top: 20px;
-    box-shadow: 1px 0px 4px rgba(164, 200, 232, 0.539);
+    box-shadow: 0px 0px 2px rgba(164, 200, 232, 0.539);
 }
 .register-button:hover{
     background-color: rgb(24, 15, 24);
@@ -105,7 +105,6 @@ label input:focus {
 	cursor: pointer;
     margin-bottom: 10px;
 }
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 

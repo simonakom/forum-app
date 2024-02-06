@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../public/title.css">
     <link rel="stylesheet" href="../public/nav-bar.css">
-	<link rel="stylesheet" href="../public/grid.css">
     <link rel="stylesheet" href="../public/home-body.css">
 </head>
 <body>
@@ -16,7 +15,6 @@
     <div class="hr"></div>
     <%- include("./components/nav-bar.ejs")%>
     <div class="hr"></div>
-
     <div class="container gap-from-top">
 		<div class="welcomeMessage">
 		<% if(!username) { %>
@@ -32,10 +30,10 @@
 		<table>
 			<thead>
 				<tr>
-					<th class="col-6 round-left">Topics</th>
-					<th class="col-1">Replies</th>
-					<th class="col-1">Views</th>
-					<th class="col-4 round-right">Last post</th>
+					<th class="round-left">Topics</th>
+					<th>Replies</th>
+					<th class="">Views</th>
+					<th class="round-right">Last post</th>
 				</tr>
 			</thead>
 			<tbody>
