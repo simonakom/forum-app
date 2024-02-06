@@ -1,15 +1,7 @@
-
-SSR server side rendering app, fullstack app
-
-tailwind- pots
-
-
-
-
 # Project name
 
 <h1 align="center">
-  <img src="./public/pictures/readme.png" alt="PulpCinemaHub"/>
+  <img src="./public/pictures/readme.png" alt="PulpCinemaHub" style="max-width: 400px; width: 100%;" />
 </h1>
 <br/>
 <div align="center">
@@ -19,6 +11,8 @@ tailwind- pots
 </div>
 
 ## Welcome!
+
+This project is mvp of forum fullstack and SSR app. App was created using tailwind, node.js, MongoDB, Javascript, css.
 
 ### Prerequisites
 
@@ -58,10 +52,22 @@ MONGO_CONNECTION=mongodb+srv://__DB_USER:__DB_PASSWORD@__DB_HOST/__DB_NAME
 
 - Use `node .`, `node app.js`, or `nodemon` (if installed) to start the project.
 
+## Todo
+
+As this project is on going there is a lot more left that needs to be worked on, so this is not a resource for production ready workflow ideas or systems.
+
+Some of the things left to do:
+ * Comments on posts
+ * Delete profile
+ * Create Help section...
+
 ## Additional Information
 
-- **Contributing**: If you're interested in contributing to this project, please see our contributing guidelines.
-- **License**: This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
-- **Acknowledgments**: Thanks to all the contributors and supporters of this project!
+- **Supporting**: Contributions and suggestions are welcome!
+- **License**: This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details. Intention is that you can use everything in this project as a starting point or as a bits and pieces in your own project.
 
-We hope you find this project useful and look forward to seeing what you build with it!
+
+Hope you find this project interesting and useful!
+
+
+<img src="./public/pictures/forum-home.png" alt="48 items" width="700" />
