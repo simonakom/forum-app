@@ -70,4 +70,6 @@ Some of the things left to do:
 Hope you find this project interesting and useful!
 
 
-<img src="./public/pictures/forum-home.png" alt="48 items" width="700" />
+<div style="text-align: center;">
+  <img src="./public/pictures/forum-home.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
+</div>
