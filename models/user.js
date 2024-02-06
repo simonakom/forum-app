@@ -1,4 +1,3 @@
-//aprasyti user schemai
 const mongoose = require("mongoose");
 
 const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "schema" - generuojamas naujas objektas  (paduodamas i konstruktoriu)
@@ -14,7 +13,7 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
         required: true,
         minLength: 6,
         maxLength: 50,
-        unique: true,
+        unique: true, // Unique - nurodo, kad duomenu bazeje butu unikalus įrašas
     },
     password: {
         type: String,
@@ -50,15 +49,12 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
     admin: {
         type: Boolean,
         default: false,
-        required: true,
     },
     registrationDate: { //vartotojui priskirta regitracijos data
         type: Date,
         default: new Date(), 
-        required: true,
     }
 });
 
 const model = mongoose.model("user", schema) //kurdami modeli yra panaudojama schema
-
 module.exports = model;

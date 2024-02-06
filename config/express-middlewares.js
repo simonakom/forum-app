@@ -4,6 +4,7 @@ const MongoStore = require ("connect-mongo") //dazniausiai sesijos saugomos serv
 const pagesRouter = require("../routes/pages") //gaunamas pages.js //naudojamas kaip middleware
 const userRouter = require("../routes/user-router"); //gaunamas user-router.js //naudojamas kaip middleware
 const postRouter = require("../routes/posts-router");//gaunamas posts-router.js 
+const commentRouter = require("../routes/comments-router");//gaunamas posts-router.js 
 const bodyParser = require('body-parser');//instaliuoti npm i body-parser: gauna duomenys if frontedn pasinaudojus pacipmis formomis
 
 
@@ -50,6 +51,7 @@ app.use (pagesRouter);
 // Routs of user
 app.use ("/api/user", userRouter); //kad pasiekti register endpoint: http://localhost:3000/api/user/register
 app.use ("/api/post", postRouter);
+app.use ("/api/comment", commentRouter);
 }
 
 

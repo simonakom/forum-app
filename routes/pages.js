@@ -104,24 +104,22 @@ router.get ("/new-post", async (req, res) => {
 		res.render("new-post", config); 
 	});
 
-//------------------------------------------------- get post by id endpoint------------------------------------------------------//
+//--------------- ---------------------------------- get post by id endpoint------------------------------------------------------//
 
 
 	router.get("/post/:id", async (req, res) => {
-		if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
-			return res.redirect("/login?error=Please, log in first!");
-		}
+		// if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
+		// 	return res.redirect("/login?error=Please, log in first!");
+		// }
 		
 		try {
-			const post = await PostModel.find({ _id: req.params.id });
-			const user = await UserModel.findOne({ _id: "65c12264203af4085f4812a3" });
-			console.log(post);
+			const post = await PostModel.findOne({ _id: req.params.id }).populate("authorId"); //vietoj 2 kreipimosi i db yra vienas, ir nurodoma kad uzpildytu author id
 			const config = {
 				title: "PulpCinemaHub - post",
 				activeTab: "",
 				loggedIn: !!req.session.user?.loggedIn,
 				post,
-				user,
+				user: post.authorId,
 			};
 			res.render("post", config);
 		} catch (err) {

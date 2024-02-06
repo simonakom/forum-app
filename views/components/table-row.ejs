@@ -4,20 +4,17 @@
 			<img src="https://placehold.co/300x300"/>
 			<div class="topic-details">
 			<!-- <a class="topic" href="">Movie You're Watching Tonight?</a> -->
-				<p class="topic"><a href=""><%= post.title %></a></p>
+				<p class="topic"><a href="/post/<%= post._id %>"><%= post.title %></a></p>
 				<p class="author">Author: <a href=""><%= post.author %></a></p>
 			</div>
 		</div>
 	</td>
-
 	<td class="col-1">
 		<div class="single-number"><%= post.commentsCount %></div>
 	</td>
-
 	<td class="col-1">
 		<div class="single-number"><%= post.commentsCount %></div>
 	</td>
-
 	<td class="col-4">
 		<div class="last-post">
 			<div>

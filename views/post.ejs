@@ -6,71 +6,53 @@
     <title><%= title %></title>
     <link rel="icon" href="../public/pictures/Pulp.webp">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../public/grid.css">
     <link rel="stylesheet" href="path/to/tailwind.css">
-    <link rel="stylesheet" href="../public/post.css">
-
+	<link rel="stylesheet" href="../public/post.css">
 </head>
 <body>
     <%- include("./components/title.ejs")%>
     <div class="hr"></div>
     <%- include("./components/nav-bar.ejs")%>
     <div class="hr"></div>
-
-		<div class="container gap-from-top gap-10">
-			<div class="post-description p-4">
-				<h2 class="text-2xl text-center mb-4 p-4"><%= post.title %></h2>
-				<div class="flex gap-5 justify-between">
-
-                    <div class="perosnal-info d-flex">
-						<img src="/public/pictures/portrait.jpg"/>
-						<div class="username font-bold"><%= user.username%></div>
-						<div class="personal-numbers">
-							<p class="">Posts: <span>14</span></p>
-							<p class="">Comments: <span>14</span></p>
-							<p class="">Registered: <span>2024-01-31</span></p>
-						</div>
-						<div class="flex justify-between">
-							<div>
-							    <i class="bi bi-hand-thumbs-up thumbs-up"></i> <span>12</span>
-							</div>
-							<div>
-								<i class="bi bi-hand-thumbs-down thumbs-down"></i><span>12</span>
-							</div>
-						</div>
+	<div class="container gap-from-top gap-10">
+		<div class="post-description p-4">
+			<h2 class="text-center mb-5 p-3"><%= post.title %></h2>
+			<div class="flex gap-5">
+				<div class="perosnal-info">
+					<img src="/public/pictures/portrait.jpg"/>
+					<div class="username font-bold text-center"><%= user.username %></div>
+					<div class="personal-numbers">
+						<p>Posts: <span><%= user.postsCount %></span></p>
+						<p>Comments: <span><%= user.commentsCount %></span></p>
+						<p>Registered:<br><span><%=user.registrationDate.toDateString()%></span></p>
 					</div>
-
-					<div class="text-description w-full my-auto">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Repellendus dolorum esse libero vero quos atque corporis corrupti.
-						Sit recusandae quia eum! Ad quasi deserunt, temporibus sed expedita
-						delectus perspiciatis, molestias beatae itaque aspernatur aut quod
-						ut illum labore? Nemo ex molestias blanditiis quod. Accusamus eaque
-						aliquam harum perspiciatis corporis voluptate voluptatum libero
-						expedita alias eius sapiente cum impedit repudiandae quos non
-						consectetur, ullam blanditiis iusto in ducimus. Fuga nulla
-						asperiores eius? Dolore, rerum dolorem. At dolorum eos mollitia ipsa
-						neque doloremque saepe sapiente itaque quibusdam? Officia nobis
-						quasi quod adipisci harum est minima eius ex veritatis optio.
-						Assumenda, numquam amet.
+					<div class="flex justify-between">
+						<div><i class="bi bi-hand-thumbs-up thumbs-up"></i> <span><%= user.likes %></span></div>
+						<div><i class="bi bi-hand-thumbs-down thumbs-down"></i><span><%= user.dislikes %></span></div>
 					</div>
-
 				</div>
+				<div class="text-description w-full"><%- post.content %></div>
 			</div>
-			<section class="d-flex text-center">
-                <form action="/api/comment" method="post" class="">
-                    <textarea name="content" id="text-editor"></textarea>
-                    <button class="create-post-btn">Create post</button>
-                </form>
-            </section>
-			<!-- Contento peržiūra -->
-            <div class="preview-block d-flex">
-            <fieldset class="border border-gray-400 rounded-3xl">
-                <legend>Post preview</legend>
-                <div id="preview"></div>
-            </fieldset>  
-            </div>
 		</div> 
+		<%if(loggedIn){%>
+			<section class="d-fle text-center w-[83%]">
+				<form action="/api/comment" method="post">
+					<textarea name="content" id="text-editor"></textarea>
+					<button class="create-post-btn">Create post</button>
+				</form>
+			</section>
+			<%}else{%>
+			<div class="bg-yellow-500 text-white">
+				You need to <a href="/login" class="underline" >log in</a>, to post comments
+			</div>
+			<%}%>
+		<div class="d-fle text-center w-[76%] ">
+		<fieldset class="border border-gray-400 rounded-3xl">
+			<legend>Post preview</legend>
+			<div id="preview"></div>
+		</fieldset>  
+		</div>
+	</div> 
     <script type="application/javascript" src="/tinymce/tinymce.min.js"></script>
     <script src="/public/tinymce-config.js"></script>
     <script src="../public/index.js"></script>

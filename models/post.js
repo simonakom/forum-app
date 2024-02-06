@@ -21,31 +21,23 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
 	viewsCount: {
 		type: Number,
 		default: 0,
-		required: true,
 	},
 	commentsCount: {
 		type: Number,
 		default: 0,
-		required: true,
 	},
 	authorId: {
 		type: mongoose.Schema.Types.ObjectId, //object reference - duomenu tipas skirtas id
 		ref: "user",  // objektas is user model
 		required: true,
 	},
-	author: {
-		type: Object,
-		ref: "user",  // objektas is user model
-	},
 	likesCount: {
 		type: Number,
 		default: 0,
-		required: true,
 	},
 	dislikesCount: {
 		type: Number,
 		default: 0,
-		required: true,
 	},
 	creationDate: {
 		type: Number,
@@ -53,16 +45,9 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
 	},
 	tags: {
 		type: Array,
-		required: true,
-		default: [],
-	},
-	images: {
-		type: Array,
-		required: true,
 		default: [],
 	},
 });
 
-const Model = mongoose.model("post", schema);
-
-module.exports = Model;
+const model = mongoose.model("post", schema);
+module.exports = model;
