@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router(); //statine funkcija klaseje express
 const UserModel = require("../models/user"); //norint dirbti su duomenimis is db (gauti users)
 const PostModel = require("../models/post"); //norint dirbti su duomenimis is db (gauti posts)
-const postModifications = require("../utils/postModifications")
 
 
 //------------------------------------------------- home endpoint------------------------------------------------------//
@@ -17,8 +16,10 @@ if (req.session.user?.loggedIn) { // Check if the user is logged in and fetch us
 	}
 }
 
-	const posts = await postModifications.getPostsWithAuthors(); //irasu gavimas is db ir ju modifikavimas
-
+	const posts = await PostModel.find({}).populate({
+		path: "author",
+		select: "username email",
+	});
     const config = {
 		activeTab: "Home",
         title: "PulpCinemaHub",
@@ -88,7 +89,7 @@ router.get("/my-profile", async (req, res) => {
 	res.render("profile", config);
 });
 
-//------------------------------------------------- post endpoint------------------------------------------------------//
+//------------------------------------------------- new post endpoint------------------------------------------------------//
 
 router.get ("/new-post", async (req, res) => { 
 	if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
@@ -104,33 +105,50 @@ router.get ("/new-post", async (req, res) => {
 		res.render("new-post", config); 
 	});
 
-//--------------- ---------------------------------- get post by id endpoint------------------------------------------------------//
-
-
-	router.get("/post/:id", async (req, res) => {
-		// if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
-		// 	return res.redirect("/login?error=Please, log in first!");
-		// }
-		
-		try {
-			const post = await PostModel.findOne({ _id: req.params.id }).populate("authorId"); //vietoj 2 kreipimosi i db yra vienas, ir nurodoma kad uzpildytu author id
-			const config = {
-				title: "PulpCinemaHub - post",
-				activeTab: "",
-				loggedIn: !!req.session.user?.loggedIn,
-				post,
-				user: post.authorId,
-			};
-			res.render("post", config);
-		} catch (err) {
-			res.redirect("/?error=Post not found");
-		}
-	});
- 
-	module.exports = router;
-
 //------------------------------------------------- get profile by id endpoint------------------------------------------------------//
 
-// router.get("/profile/:id", async (req, res) => {
-// 	const user = await UserModel.find({ _id: req.params.id });
-// });
+router.get("/profile/:id", async (req, res) => {
+	try {
+		const userData = await UserModel.findOne({ _id: req.session.user.id });
+		console.log(userData);
+		const config = {
+			activeTab: "Profile",
+			title: "Fortra - My profile",
+			profilePhoto: userData.profilePicture,
+			loggedIn: !!req.session.user?.loggedIn,
+			username: userData.username,
+			email: userData.email,
+			birthDate: userData.birthDate,
+			postsCount: userData.postsCount,
+			commentsCount: userData.commentsCount,
+			likes: userData.likes,
+			dislikes: userData.dislikes,
+		};
+		res.render("foreign-profile", config);
+	} catch (err) {}
+});
+
+//--------------- -------------------------------- get post by id endpoint------------------------------------------------------//
+
+router.get("/post/:id", async (req, res) => {
+	// if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
+	// 	return res.redirect("/login?error=Please, log in first!");
+	// }
+	
+	try {
+		const post = await PostModel.findOne({ _id: req.params.id }).populate("author"); //vietoj 2 kreipimosi i db yra vienas, ir nurodoma kad uzpildytu author id
+		const config = {
+			title: "PulpCinemaHub - post",
+			activeTab: "",
+			loggedIn: !!req.session.user?.loggedIn,
+			post,
+			user: post.author,
+		};
+		res.render("post", config);
+	} catch (err) {
+		res.redirect("/?error=Post not found");
+	}
+});
+
+module.exports = router;
+

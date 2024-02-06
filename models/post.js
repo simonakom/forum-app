@@ -26,7 +26,7 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
 		type: Number,
 		default: 0,
 	},
-	authorId: {
+	author: {
 		type: mongoose.Schema.Types.ObjectId, //object reference - duomenu tipas skirtas id
 		ref: "user",  // objektas is user model
 		required: true,

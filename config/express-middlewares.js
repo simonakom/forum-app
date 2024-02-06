@@ -51,7 +51,7 @@ app.use (pagesRouter);
 // Routs of user
 app.use ("/api/user", userRouter); //kad pasiekti register endpoint: http://localhost:3000/api/user/register
 app.use ("/api/post", postRouter);
-app.use ("/api/comment", commentRouter);
+app.use("/api/comment", commentRouter);
 }
 
 

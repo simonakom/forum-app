@@ -3,29 +3,39 @@ const router = express.Router();
 const CommentModel = require("../models/comments");
 
 
+//------------------------------------------------- get all comments------------------------------------------------------//
 
-//gaus visus komentarus is visu postu
-router.get ("/", async (req,res) => {
+router.get ("/", async (req,res) => { //http://localhost:3000/api/comment/
     const comment = await CommentModel.find({});
     res.status(200).json (comment);
 })
 
 
-//gaus visus komentarus pagal post id 
-router.get ("/postId", async (req,res) => {
+//------------------------------------------------- get comments by postId------------------------------------------------------//
 
+router.get ("/post/:postId", async (req,res) => { 
 })
 
+//------------------------------------------------- get comments by userId------------------------------------------------------//
 
-//gaus visus komentarus pagal user id 
-router.get ("/userId", async (req,res) => {
-
+router.get ("/user/:userId", async (req,res) => { 
 })
 
+//---------------------------------------------------- add new comments ------------------------------------------------------------//
 
-//post: nauju komentaru sukurimas 
+//only logged in users?
+router.post ("/", async (req,res) => { 
+})
 
-//komentaro istrinimas 
+//---------------------------------------------------- delete comments ------------------------------------------------------------//
+
+router.delete("/:id", async (req, res) => {
+});
+
+//---------------------------------------------------- update comments ------------------------------------------------------------//
+
+router.put("/:id", async (req, res) => {
+});
 
 
 module.exports = router;
