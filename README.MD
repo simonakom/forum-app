@@ -12,7 +12,7 @@
 
 ## Welcome!
 
-This project is mvp of forum fullstack and SSR app. App was created using tailwind, node.js, MongoDB, Javascript, css.
+This project is mvp of forum fullstack and SSR app. App was created using tailwind,bootstrap, node.js, MongoDB, Javascript, css.
 
 ### Prerequisites
 
