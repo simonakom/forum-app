@@ -1,10 +1,12 @@
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require ("connect-mongo") //dazniausiai sesijos saugomos serverio atmintyje, o jei app dideles tada db. Modulis kuris ikelia sesijas i db:  npm i connect-mongo. Jo instaliacija: npm i connect-mongo
+
 const pagesRouter = require("../routes/pages") //gaunamas pages.js //naudojamas kaip middleware
 const userRouter = require("../routes/user-router"); //gaunamas user-router.js //naudojamas kaip middleware
 const postRouter = require("../routes/posts-router");//gaunamas posts-router.js 
 const commentRouter = require("../routes/comments-router");//gaunamas posts-router.js 
+
 const bodyParser = require('body-parser');//instaliuoti npm i body-parser: gauna duomenys if frontedn pasinaudojus pacipmis formomis
 
 

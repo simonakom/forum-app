@@ -47,6 +47,13 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
 		type: Array,
 		default: [],
 	},
+	lastComment: {
+		type: Date,
+	},
+	lastCommentBy: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "user",
+	},
 });
 
 const model = mongoose.model("post", schema);

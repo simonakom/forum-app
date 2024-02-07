@@ -5,7 +5,7 @@
 			<div class="topic-details">
 			<!-- <a class="topic" href="">Movie You're Watching Tonight?</a> -->
 				<p class="topic"><a href="/post/<%= post._id %>"><%= post.title %></a></p>
-				<p class="author">Author: <a href=""><%= post.author.username %></a></p>
+				<p class="author">Author: <a href="/profile/<%= post.author._id %>"><%= post.author.username %></a></p>
 			</div>
 		</div>
 	</td>
@@ -14,14 +14,14 @@
 	</td>
 	<td class="col-1">
 		<div class="single-number"><%= post.viewsCount %></div>
-	</td>
+	</td>  
 	<td class="col-4">
 		<div class="last-post">
 			<div>
 				<span>by&nbsp</span>
-				<span class="author"><a href=""class="author-outline">Simonak</a></span>
+				<span class="author"><a href="/profile/<%= post.lastCommentBy.id %>"class="author-outline"><%= post.lastCommentBy.username %></a></span>
 			</div>
-			<div class="date">Tue Mar 21, 2017 08:50</div>
+			<div class="date"><%= new Date(post.lastComment).toDateString() %></div>
 		</div>
 	</td>
-</tr>
+</tr> 

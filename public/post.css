@@ -93,6 +93,53 @@ legend {
   overflow-y: hidden;
   word-wrap: break-word;
 }
+.note {
+  width: 80%;
+  font-size: 17px;
+  word-wrap: break-word;
+  background-image: linear-gradient(135deg, #5a152eba 0%, rgba(103, 24, 78, 0.218) 100%);
+  color: aliceblue;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.note a{
+  font-size: 17px;
+  color: #fdd808e1;
+  text-decoration: none;
+}
+.note a:hover{
+  color: #fdd808e1;
+}
+
+.message {
+  width: 81%;
+  font-size: 17px;
+  word-wrap: break-word;
+  background-image: linear-gradient(135deg, #4d9b8964 0%, rgba(24, 103, 36, 0) 100%);
+  color: aliceblue;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.error {
+  width: 81%;
+  font-size: 17px;
+  word-wrap: break-word;
+  background-image: linear-gradient(135deg, #5a152e93 0%, rgba(103, 24, 78, 0.106) 100%);
+  color: aliceblue;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.comment {
+  color: #15e854;
+}
+
 
 
 

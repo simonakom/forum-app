@@ -15,11 +15,13 @@
     <%- include("./components/nav-bar.ejs")%>
     <div class="hr"></div>
 	<div class="container gap-from-top gap-10">
+		<%- include("./components/infoMessage.ejs") %>
+		<%- include("./components/errorMessage.ejs") %>
 		<div class="post-description p-4">
 			<h2 class="text-center mb-5 p-3"><%= post.title %></h2>
 			<div class="flex gap-5">
 				<div class="perosnal-info">
-					<img src="../public/pictures/portrait.png"/>
+					<img src="<%= user.profilePicture %>"/>
 					<div class="username font-bold text-center"><%= user.username %></div>
 					<div class="personal-numbers">
 						<p>Posts: <span><%= user.postsCount %></span></p>
@@ -36,14 +38,14 @@
 		</div> 
 		<%if(loggedIn){%>
 			<section class="d-fle text-center w-[83%]">
-				<form action="/api/comment" method="post">
+				<form action="/api/comment/<%= post._id %>" method="post">
 					<textarea name="content" id="text-editor"></textarea>
-					<button class="create-post-btn">Create post</button>
+					<button class="create-post-btn">Comment</button>
 				</form>
 			</section>
 			<%}else{%>
-			<div class="bg-yellow-500 text-white">
-				You need to <a href="/login" class="underline" >log in</a>, to post comments
+			<div class= "note">
+				Please, <a href="/login" class="underline">  log in</a>to post comment!
 			</div>
 			<%}%>
 		<div class="d-fle text-center w-[76%]">
@@ -52,6 +54,8 @@
 			<div id="preview"></div>
 		</fieldset>  
 		</div>
+		<% for(const comment of comments) { %> <%-
+			include("./components/comment.ejs", {comment}) %> <% } %>
 	</div> 
     <script type="application/javascript" src="/tinymce/tinymce.min.js"></script>
     <script src="/public/tinymce-config.js"></script>
