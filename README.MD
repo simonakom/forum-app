@@ -56,10 +56,11 @@ MONGO_CONNECTION=mongodb+srv://__DB_USER:__DB_PASSWORD@__DB_HOST/__DB_NAME
 
 As this project is on going there is a lot more left that needs to be worked on, so this is not a resource for production ready workflow ideas or systems.
 
-Some of the things left to do:
- * Update posts
- * Delete profile
- * Create Help section...
+Some of the things/functions left to do:
+ * Update posts 
+ * Delete profile 
+ * Likes/Dislikes
+ * Change Password...
 
 ## Additional Information
 

@@ -15,6 +15,7 @@
     <div class="hr"></div>
     <%- include("./components/nav-bar.ejs")%>
     <div class="hr"></div>
+    <%- include("./components/errorMessage.ejs") %>
     <div class="container gap-from-top bg-content">
             <div class="profile-info">
                 <div class="profile-photo">
@@ -45,18 +46,19 @@
                     <div>
                         <span class="thumbs">
                             <span>
-                                <i class="bi bi-hand-thumbs-up thumbs-up"></i>
-                                <span><%=likes %></span>
+                                <i class="bi bi-hand-thumbs-up thumbs-up profile-likes"></i>
+                                <span class="profile-likes"><%=likes %></span>
                             </span>
                             <span>
-                                <i class="bi bi-hand-thumbs-down thumbs-down"></i>
-                                <span><%=dislikes %></span>
+                                <i class="bi bi-hand-thumbs-down thumbs-down profile-dislikes"></i>
+                                <span class="profile-dislikes"><%=dislikes %></span>
                             </span>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
+    <script> let id = "<%= id%>"; </script>
     <script src="../public/profile.js"></script>
     <script src="../public/index.js"></script>
 </body>

@@ -1,7 +1,6 @@
-
-function validate(comment) {
-	const titleValidation = validateContent(comment.content);
-	if (!titleValidation.isValid) return titleValidation.message;
+function validate(comments) {
+	const contentValidation = validateContent(comments.content);
+	if (!contentValidation.isValid) return contentValidation.message;
     
 	return "Successfully registered!";
 }

@@ -14,7 +14,7 @@
     <div class="hr"></div>
     <%- include("./components/nav-bar.ejs")%>
     <div class="hr"></div>
-	<div class="container gap-from-top gap-10">
+	<div class="container gap-from-top gap-5">
 		<%- include("./components/infoMessage.ejs") %>
 		<%- include("./components/errorMessage.ejs") %>
 		<div class="post-description p-4">
@@ -48,12 +48,13 @@
 				Please, <a href="/login" class="underline">  log in</a>to post comment!
 			</div>
 			<%}%>
-		<div class="d-fle text-center w-[76%]">
+		<div class="d-fle text-center w-[76%] max-h-[10%]">
 		<fieldset class="border border-gray-400 rounded-3xl">
 			<legend>Post preview</legend>
 			<div id="preview"></div>
 		</fieldset>  
 		</div>
+		<p class="text-2xl border-b border-[#a596a9]">Comments</p>
 		<% for(const comment of comments) { %> <%-
 			include("./components/comment.ejs", {comment}) %> <% } %>
 	</div> 

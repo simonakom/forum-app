@@ -53,7 +53,9 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
     registrationDate: { //vartotojui priskirta regitracijos data
         type: Date,
         default: new Date(), 
-    }
+    },
+    profileLikedUsers: [String],
+	profileDislikedUsers: [String],
 });
 
 const model = mongoose.model("user", schema) //kurdami modeli yra panaudojama schema

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const PostModel = require("../models/post");
+const UserModel = require("../models/user");
 const validate = require("../utils/validation/postValidation");
 
 
@@ -61,17 +62,72 @@ router.post("/", async (req, res) => {
 		content,
 		author,
 	});
+	UserModel.findOneAndUpdate({_id: author}, {$inc: {postsCount: 1} }).exec();
 
 	await newPost.save();
 	res.redirect("/?message=New post was successfully created!");
 });
 
 
-
 //-------------------------------------------------update post -------------------------------------------------------//
-
 router.put("/", async (req, res) => {
 });
 
+//------------------------------------------------- like post -------------------------------------------------------//
+
+router.get("/like/:postId", async (req, res) => {
+	if (!req.session.user?.loggedIn) {
+		return res.status(403).json({ message: "Please, log in first!" });
+	}
+
+	const post = await PostModel.findOne({ _id: req.params.postId });
+	if (post.postLikedUsers.includes(req.session.user.id)) {
+		return res.status(403).json({ message: "You already liked this post!" });
+	}
+
+	if (post.postDislikedUsers.includes(req.session.user.id)) {
+		post.postDislikedUsers.splice(
+			post.postDislikedUsers.findIndex(
+				(dislikedUser) => req.session.user.id === dislikedUser
+			),
+			1
+		);
+		post.dislikesCount--;
+	}
+
+	console.log(req.session.user.id);
+	post.postLikedUsers.push(req.session.user.id);
+	post.likesCount++;
+	await post.save();
+	res.status(200).json({ message: "Successfully liked post!" });
+});
+
+//------------------------------------------------- dislike post -------------------------------------------------------//
+
+router.get("/dislike/:postId", async (req, res) => {
+	if (!req.session.user?.loggedIn) {
+		return res.status(403).json({ message: "Please, log in first!" });
+	}
+
+	const post = await PostModel.findOne({ _id: req.params.postId });
+
+	if (post.postDislikedUsers.includes(req.session.user.id)) {
+		return res.status(403).json({ message: "You already disliked this post!" });
+	}
+
+	if (post.postLikedUsers.includes(req.session.user.id)) {
+		post.postLikedUsers.splice(
+			post.postLikedUsers.findIndex(
+				(dislikedUser) => req.session.user.id === dislikedUser
+			),
+			1
+		);
+		post.likesCount--;
+	}
+	post.postDislikedUsers.push(req.session.user.id);
+	post.dislikesCount++;
+	await post.save();
+	res.status(200).json({ message: "Successfully disliked post!" });
+});
 
 module.exports = router;

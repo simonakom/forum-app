@@ -145,6 +145,63 @@ router.get("/logout", async (req, res) => {
     }
 });
  
+//-------------------------------likes----------------------------------//
+
+router.get("/like/:profileId", async (req, res) => {
+	if (!req.session.user?.loggedIn) {
+		return res.status(403).json({ message: "Please, log in first!" });
+	}
+
+	const user = await UserModel.findOne({ _id: req.params.profileId });
+	if (user.profileLikedUsers.includes(req.session.user.id)) {
+		return res.status(403).json({ message: "This User was already liked!" });
+	}
+
+	if (user.profileDislikedUsers.includes(req.session.user.id)) {
+		user.profileDislikedUsers.splice( //masyvas is kurio norima pasalinti 
+			user.profileDislikedUsers.findIndex( //paieska pagal id masyve
+				(dislikedUser) => req.session.user.id === dislikedUser
+			),
+			1
+		);
+		user.dislikes--;
+	}
+
+	console.log(req.session.user.id);
+	user.profileLikedUsers.push(req.session.user.id);
+	user.likes++;
+	await user.save();
+	res.status(200).json({ message: "Profile was successfully liked!" });
+});
+
+//-------------------------------dislikes----------------------------------//
+
+router.get("/dislike/:profileId", async (req, res) => {
+	if (!req.session.user?.loggedIn) {
+		return res.status(403).json({ message: "You should log in!" });
+	}
+
+	const user = await UserModel.findOne({ _id: req.params.profileId });
+
+	if (user.profileDislikedUsers.includes(req.session.user.id)) {
+		return res.status(403).json({ message: "This User was already disliked!" });
+	}
+
+	if (user.profileLikedUsers.includes(req.session.user.id)) {
+		user.profileLikedUsers.splice(
+			user.profileLikedUsers.findIndex(
+				(dislikedUser) => req.session.user.id === dislikedUser
+			),
+			1
+		);
+		user.likes--;
+	}
+	user.profileDislikedUsers.push(req.session.user.id);
+	user.dislikes++;
+	await user.save();
+	res.status(200).json({ message: "Profile was successfully disliked!" });
+});
+
 
 //-------------------------------check session----------------------------------//
 

@@ -3,7 +3,7 @@ const router = express.Router();
 const CommentModel = require("../models/comments");
 const PostModel = require("../models/post");
 const UserModel = require("../models/user");
-// const validate = require("../utils/validation/commentValidation.js");
+const validate = require("../utils/validation/commentValidation");
 
 
 //------------------------------------------------- get all comments of all posts------------------------------------------------------//
@@ -52,10 +52,11 @@ router.post ("/:postId", async (req,res) => {
         if (!content ) {
             return res.redirect(`/post/${req.params.postId}?error=Please, fill all fields!!`);
         }
-        // const validationResult = validate(req.body)
-        // if (validationResult !== "Successfully registered!") {
-        //     return res.redirect("/post/${req.params.postId}?error=" + validationResult);
-        // }
+
+        const validationResult = validate(req.body)
+        if (validationResult !== "Successfully registered!") {
+            return res.redirect("/post/${req.params.postId}?error=" + validationResult);
+        }
  
         const newComment = new CommentModel({
 			content,

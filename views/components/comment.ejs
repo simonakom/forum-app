@@ -1,3 +1,26 @@
-<div class="comment">
-	<div class="bg-black p-4"><%- comment.content%></div>
+
+<div class="comment flex bg-[#b1a5bc2d] rounded-lg py-5 px-5 items-center justify-between">
+	<div class="flex items-center"> 
+		<div class="pr-5 block under">
+			<a href="/profile/<%= comment.author._id %>"><%= comment.author.username%></a>
+			<div class="text-sm"><%= new Date(comment.postDate).toDateString() %></div>
+		</div>
+		<div class="px-5"><%- comment.content%></div>
+    </div>
+	
+    <div>
+		<span class="thumbs flex flex-col">
+			<span>
+				<i class="bi bi-hand-thumbs-up thumbs-up pl-1"></i>
+				<span class="pl-1"><%= comment.likesCount%></span>
+			</span>
+			<span>
+				<i class="bi bi-hand-thumbs-down thumbs-down"></i>
+				<span><%= comment.dislikesCount%></span>
+			</span>
+		</span>
+	</div>
 </div> 
+
+
+

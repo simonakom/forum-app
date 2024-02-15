@@ -68,6 +68,19 @@ router.get("/login", (req, res) => {
 	res.render("login", config); //Login routas skirtas prisijungimui
 });
 
+//------------------------------------------------- help endpoint------------------------------------------------------//
+
+router.get("/help", async (req, res) => {
+
+	
+	const config = {
+		activeTab: "Help",
+		title: "PulpCinemaHub - Help Center",
+		loggedIn: !!req.session.user?.loggedIn,
+	};
+	res.render("help", config);
+});
+
 //------------------------------------------------- profile endpoint------------------------------------------------------//
 
 router.get("/my-profile", async (req, res) => {
@@ -101,7 +114,7 @@ router.get ("/new-post", async (req, res) => {
 	if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
 		return res.redirect("/login?error=Please, log in first!");
 	}
-
+	
 		const config = {
 			title: "PulpCinemaHub - new post",
 			activeTab: "Post",
@@ -132,6 +145,7 @@ router.get("/profile/:id", async (req, res) => {
 			likes: userData.likes,
 			dislikes: userData.dislikes,
 			error: req.query.error, 
+			id: req.params.id,
 		};
 		res.render("foreign-profile", config);
 	} catch (err) {
@@ -148,7 +162,10 @@ router.get("/post/:id", async (req, res) => {
 		//vietoj 2 kreipimosi i db yra vienas, ir nurodoma kad uzpildytu author id
 		const post = await PostModel.findOne({ _id: req.params.id }).populate("author")
 
-		const comments = await CommentModel.find({ post: req.params.id });
+		const comments = await CommentModel.find({ post: req.params.id }).populate({
+			path: "author",
+            select: "username",
+		});
 		post.viewsCount++;
 		post.save();
  

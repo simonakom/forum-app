@@ -7,7 +7,7 @@
 				<p class="topic"><a href="/post/<%= post._id %>"><%= post.title %></a></p>
 				<p class="author">Author: <a href="/profile/<%= post.author._id %>"><%= post.author.username %></a></p>
 			</div>
-		</div>
+		</div>  
 	</td>
 	<td class="col-1">
 		<div class="single-number"><%= post.commentsCount %></div>
@@ -19,7 +19,9 @@
 		<div class="last-post">
 			<div>
 				<span>by&nbsp</span>
-				<span class="author"><a href="/profile/<%= post.lastCommentBy.id %>"class="author-outline"><%= post.lastCommentBy.username %></a></span>
+				<span class="author">
+					<a href="/profile/<%=post.lastCommentBy?._id || 'No comments'%>"class="author-outline"><%= post.lastCommentBy?.username || 'No comments'%></a>
+				</span>
 			</div>
 			<div class="date"><%= new Date(post.lastComment).toDateString() %></div>
 		</div>

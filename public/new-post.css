@@ -189,8 +189,8 @@ nav {
 	position: sticky;
 	top: 0px;
   /* changed */
-  height: 59px;
-  padding: 12px 20px 5px 20px;
+  height: 52px;
+  padding: 9px 20px 5px 20px;
   z-index: 1000; 
 }
 
@@ -203,7 +203,7 @@ nav {
   align-items: center;
   margin: 0 auto;
   width: 85%;
-  min-height: 35%;
+  min-height: 30%;
 }
 .hr {
   height: 1px;
@@ -215,7 +215,7 @@ nav {
 .left-links {
   display: flex;
   align-items: center;
-  gap: 30px
+  gap: 30px;
 }
 .right-links {
   color: al;
@@ -240,7 +240,7 @@ a {
   color: #fdd808;
   font-size: 20px;
   text-decoration: none;
-  margin-right: 10px;
+  margin-right: 20px;
     /* changed */
     margin-bottom: 8px;
 }

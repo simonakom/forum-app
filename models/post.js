@@ -54,6 +54,8 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "user",
 	},
+	postLikedUsers: [String],
+	postDislikedUsers: [String],
 });
 
 const model = mongoose.model("post", schema);

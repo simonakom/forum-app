@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="icon" href="../public/pictures/Pulp.webp">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../public/title.css">
+    <link rel="stylesheet" href="../public/nav-bar.css">
+    <link rel="stylesheet" href="../public/help.css">    
+</head>
+<body>
+    <%- include("./components/title.ejs")%>
+    <div class="hr"></div>
+    <%- include("./components/nav-bar.ejs")%>
+    <div class="hr"></div>
+    <div class="container gap-from-top bg-content">
+            
+        <section>
+            <div class="container flex content-center">   
+                <h1 class="">FAQs Section</h1>
+                <div class="accordion"><p>Can I have multiple accounts?</p></div>
+                <p class="description">Individuals are not permitted to have and use more than one account on WordPress.org, in order to maintain accountability for actions and to prevent anonymous abuse.
+                    Companies are permitted to have a separate account to own and manage their plugins and/or themes. However in those situations, the account is only intended to be the owner of the plugins/themes, and is not permitted to use the forums.
+                    Individual user accounts are to be appointed to the various roles used such as contributors, support representatives and similar. Developers who abuse this privilege will have it revoked.</p>
+                <div class="accordion"><p>What do I put in the title of my post?</p></div>
+                <p class="description">A descriptive title is best, as that will attract people who think they may know the answer right away. Generic titles are much less effective.</p>
+                <div class="accordion"><p>What do I put in my post?</p></div>
+                <p class="description">Include details about the hosting environment, WordPress install (plugins, themes, etc.), and the problem being faced when posting a topic.
+                    If there are errors, copy them exactly, word for word, into the post. It’s best to include the full error than to summarize – sometimes wording is important. If a plugin was activated or a setting changed immediately before the error occurred, mention that and, if possible, exactly what steps were taken.
+                    Be careful not to leak any privileged information (like your real name or email) if you’re not okay with those being public.</p>
+
+                <div class="accordion"><p>How do tags work?</p></div>
+                <p class="description">The same as in your website, tags are ways we use to organize posts to attract the right helpers. They can be used to allow developers keep track of specific features, as well as the volunteer moderators to recognize repeat issues and escalate to core devs if needed.
+                    That means your tags should be chosen wisely and carefully. The tag “REST API” would be a great for a topic about the REST API, while “rest” is common and largely unrelated English word and therefore not a great tag choice. Avoid very general tags, like “WordPress” and “problem” that don’t add any value.
+                    Tags should be separated by commas.</p>
+            </div>
+        </section>
+    
+
+    </div>
+    <script src="../public/help.js"></script>
+    <script src="../public/index.js"></script>
+</body>
+</html>
