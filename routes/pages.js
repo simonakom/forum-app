@@ -4,7 +4,6 @@ const UserModel = require("../models/user"); //norint dirbti su duomenimis is db
 const PostModel = require("../models/post"); //norint dirbti su duomenimis is db (gauti posts)
 const CommentModel = require("../models/comments");
 
-
 //------------------------------------------------- home endpoint------------------------------------------------------//
 router.get ("/", async (req, res) => { //index.ejs failo atvaizdavimas iš views aplanko
 
@@ -26,6 +25,7 @@ if (req.session.user?.loggedIn) { // Check if the user is logged in and fetch us
 		path: "lastCommentBy",
 		select: "username",
 	});
+	// console.log(posts[0]);
 	
     const config = {
 		activeTab: "Home",
@@ -36,7 +36,6 @@ if (req.session.user?.loggedIn) { // Check if the user is logged in and fetch us
 		error: req.query.error, 
 		posts,
     }
-
 	res.render("index", config); //Kartu paduodami ir parametrai EJS failui
 });
 
@@ -69,9 +68,7 @@ router.get("/login", (req, res) => {
 });
 
 //------------------------------------------------- help endpoint------------------------------------------------------//
-
 router.get("/help", async (req, res) => {
-
 	
 	const config = {
 		activeTab: "Help",
@@ -82,14 +79,13 @@ router.get("/help", async (req, res) => {
 });
 
 //------------------------------------------------- profile endpoint------------------------------------------------------//
-
 router.get("/my-profile", async (req, res) => {
 	if (!req.session.user?.loggedIn) { //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
 		return res.redirect("/login?error=Please, log in first!");
 	}
 	//gauti duomenys is db ir atvaizduoti profilyje
 	const userData = await UserModel.findOne({_id: req.session.user.id}); //_id - nurodoma kokio laukelio ieskome is db 
-	console.log(userData);
+	// console.log(userData);
 	
 	const config = {
 		activeTab: "Profile",
@@ -104,7 +100,6 @@ router.get("/my-profile", async (req, res) => {
 		likes: userData.likes,
 		dislikes: userData.dislikes
         // admin: userData.admin === "simonak" //jei toks vartotojas, tada priskiriami admin teises
-
 	};
 	res.render("profile", config);
 });
@@ -114,7 +109,6 @@ router.get ("/new-post", async (req, res) => {
 	if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
 		return res.redirect("/login?error=Please, log in first!");
 	}
-	
 		const config = {
 			title: "PulpCinemaHub - new post",
 			activeTab: "Post",
@@ -122,6 +116,7 @@ router.get ("/new-post", async (req, res) => {
 			error: req.query.error, //http://localhost:3000/new-post?error=error
 		}
 		res.render("new-post", config); 
+		//Kartu paduodami ir parametrai EJS failui
 	});
 
 //------------------------------------------------- get profile by id endpoint------------------------------------------------------//
@@ -134,7 +129,7 @@ router.get("/profile/:id", async (req, res) => {
 		const userData = await UserModel.findOne({ _id: req.params.id });
 		const config = {
 			activeTab: "Profile",
-			title: "Fortra - My profile",
+			title: "Fortra - Profile",
 			profilePhoto: userData.profilePicture,
 			loggedIn: !!req.session.user?.loggedIn,
 			username: userData.username,

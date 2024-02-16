@@ -1,5 +1,4 @@
 
-
 body {
   margin: 0;
   padding: 0;
@@ -10,7 +9,6 @@ body {
   background-attachment: fixed; 
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
 nav {
 	transition:   background-image 0.3s;
 	position: sticky;
@@ -18,7 +16,6 @@ nav {
   height: 35px;
   padding: 12px 20px 5px 20px;
 }
-
 .right-links-logo a {
   display: none; 
 }
@@ -37,7 +34,6 @@ nav {
   margin: 0 auto;
   box-shadow: 0px 0px 3px rgba(164, 200, 232, 0.539);
 }
-
 .left-links {
   display: flex;
   align-items: center;
@@ -59,8 +55,6 @@ nav {
   color: aliceblue;
   font-size: 19px;
   text-shadow: none;
-  /* font-size: 27px;  */
-  /* transition: color 0.1s ease; */
 }
 a {
   color: #fdd808;
@@ -72,7 +66,6 @@ a:visited {
     color: #fdd808;
 }
 a:hover {
-  /* color: #c082b7da; */
   color: aliceblue;
   text-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
   font-size: 18px; 
@@ -90,60 +83,11 @@ a[data-tooltip]:hover::before {
   margin-top: 35px;
   white-space: nowrap;
 }
-/* .search {
-  align-items: center;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-} */
-/* .search i {
-  color: #fdd808;
-  font-size: 20px;
-  text-decoration: none;
-  margin-left: 10px;
-} */
-/* .search input {
-  width: 300px;
-  padding: 10px 25px;
-  border: none;
-  border-radius: 30px;
-  background-color: #dfcfe32f;
-  box-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
-  color: antiquewhite;
-} */
-/* .search input::placeholder {
-  color: rgba(250, 235, 215, 0.559);
-} */
-/* .search input:focus {
-  background-color: #dfcfe34c;
-  color: aliceblue;
-  outline: none; 
-} */
 
 @media (max-width: 1230px) {
-  /* .search {
-    flex-direction: column; 
-  }
-  .search input {
-    display: none; 
-    background-color: #323034;
-  }
-  .search input:focus {
-    background-color: #323034;
-    color: #fdd808;
-    outline: none; 
-  }
-  .search:hover input {
-    display: block; 
-  } */
   .left-links {
     position: relative; 
   }
-  /* .search:hover input {
-    position: absolute;
-    bottom: -7px; 
-    left: -3px; 
-  } */
 }
 @media (max-width: 730px) {
   .right-links a {

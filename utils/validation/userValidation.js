@@ -1,10 +1,8 @@
 function validate(user) {
 	const usernameValidation = validateUsername(user.username);
 	if (!usernameValidation.isValid) return usernameValidation.message;
-
 	const passwordValidation = validatePassword(user.password);
     if (!passwordValidation.isValid) return passwordValidation.message;
-
 	const emailValidation = validateEmail(user.email);
     if (!emailValidation.isValid) return emailValidation.message;
 
@@ -30,7 +28,6 @@ function validateUsername(username) {
             message: "Username must only contain letters and numbers",
         };
     }
-
     return { isValid: true, message: "Success" };
 }
 
@@ -66,7 +63,6 @@ function validatePassword(password) {
             message: "Password must contain at least one symbol",
         };
     }
-
     return { isValid: true, message: "Successfully registered!" };
 }
 
@@ -83,13 +79,9 @@ function validateEmail(email) {
             message: "Email must be shorter than 50 characters",
         };
     }
-
     return { isValid: true, message: "Success" };
 }
-
 module.exports = validate;
-
-
 
 
 // function validate(user) {

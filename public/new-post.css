@@ -76,11 +76,6 @@ legend{
   align-self: center;
 }
 
-
-
-
-
-
 /* new title as tailwind overriding title.css */
 body {
   margin: 0;
@@ -183,7 +178,6 @@ body {
   background-attachment: fixed; 
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
 nav {
 	transition:   background-image 0.3s;
 	position: sticky;
@@ -193,7 +187,6 @@ nav {
   padding: 9px 20px 5px 20px;
   z-index: 1000; 
 }
-
 .right-links-logo a {
   display: none; 
 }
@@ -233,22 +226,19 @@ nav {
   color: aliceblue;
   font-size: 19px;
   text-shadow: none;
-  /* font-size: 27px;  */
-  /* transition: color 0.1s ease; */
 }
 a {
   color: #fdd808;
   font-size: 20px;
   text-decoration: none;
   margin-right: 20px;
-    /* changed */
-    margin-bottom: 8px;
+  /* changed */
+  margin-bottom: 8px;
 }
 a:visited {
     color: #fdd808;
 }
 a:hover {
-  /* color: #c082b7da; */
   color: aliceblue;
   text-shadow: 0px 0px 2px rgba(170, 178, 185, 0.539);
   font-size: 18px; 

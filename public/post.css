@@ -20,8 +20,8 @@
   box-shadow: 0px 0px 8px rgba(164, 200, 232, 0.539);
 }
 .post-description h2 {
-border-bottom: 2px solid #1f1422a4;
-font-size: 22px;
+  border-bottom: 2px solid #1f1422a4;
+  font-size: 22px;
 }
 .perosnal-info {
   background-color: #847c896e;
@@ -38,9 +38,9 @@ font-size: 22px;
   box-shadow: 0px 0px 5px rgba(164, 200, 232, 0.539);
 }
 .perosnal-info .username {
- font-size: 17px;
- text-align: center;
- padding: 8px 0;
+  font-size: 17px;
+  text-align: center;
+  padding: 8px 0;
 }
 .perosnal-info .personal-numbers{
   font-size: 16px;
@@ -110,11 +110,11 @@ legend {
   font-size: 17px;
   color: #fdd808e1;
   text-decoration: none;
+  margin-right: 6px;
 }
 .note a:hover{
   color: #fdd808e1;
 }
-
 .message {
   width: 81%;
   font-size: 17px;
@@ -154,8 +154,6 @@ legend {
   text-shadow: none;
   text-decoration: underline;
 }
-
-
 
 /* new title as tailwind overriding title.css */
 body {
@@ -247,6 +245,7 @@ img {
     height: 135px;
   }
 }
+
 /* new navbar as tailwind overriding nav-bar.css */
 body {
   margin: 0;

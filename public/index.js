@@ -8,7 +8,6 @@ window.addEventListener("scroll", function () {
 	}
 });
 
-
 function destroyEvent (event) { //paspaudus ant error logine -> isnyksta
 	event.target.remove();
 }

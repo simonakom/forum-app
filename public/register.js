@@ -25,7 +25,6 @@ const registerButton = document.querySelector(".register-button");
 //     console.log(response);
 // }
 
-
 document.getElementById('profile-photo').addEventListener('change', handleFileSelect);
 
 function handleFileSelect() {

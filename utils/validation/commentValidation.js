@@ -6,7 +6,6 @@ function validate(comments) {
 }
 
 function validateContent(content) {
-
     if (content.length < 5) {
         return {
             isValid: false,
@@ -20,6 +19,5 @@ function validateContent(content) {
     } 
     return { isValid: true, message: "Success" };
 }
-
 
 module.exports = validate;

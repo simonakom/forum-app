@@ -2,7 +2,6 @@
 function validate(post) {
 	const titleValidation = validateTitle(post.title);
 	if (!titleValidation.isValid) return titleValidation.message;
-
     const contentValidation = validateContent(post.content);
     if (!contentValidation.isValid) return contentValidation.message;
     

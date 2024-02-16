@@ -4,16 +4,13 @@ const PostModel = require("../models/post");
 const UserModel = require("../models/user");
 const validate = require("../utils/validation/postValidation");
 
-
 //------------------------------------------------- get all posts------------------------------------------------------//
-
 router.get("/", async (req, res) => { // http://localhost:3000/api/post/
 	const allPosts = await PostModel.find({});
 	res.status(200).json(allPosts);
 });
 
 //-------------------------------------------------get post by id -------------------------------------------------------//
-
 router.get("/:id", async (req, res) => { //http://localhost:3000/api/post/65c2769e429ff20b9f2103cb 
 	const post = await PostModel.findOne({ _id: req.params.id }); //Jei neatrandamas, reiksme tampa undefined
 	if (!post) { 
@@ -23,7 +20,6 @@ router.get("/:id", async (req, res) => { //http://localhost:3000/api/post/65c276
 });
 
 //-------------------------------------------------delete post -------------------------------------------------------//
-
 router.delete("/:id", async (req, res) => {
 	const post = await PostModel.findOne({ _id: req.params.id }); //Jei neatrandamas, reiksme tampa undefined
 	if (!post) {
@@ -40,17 +36,15 @@ router.delete("/:id", async (req, res) => {
 		.json({ message: "Jūs neturite teisės ištrinti šio įrašo" });
 });
 
-
 //-------------------------------------------------post post -------------------------------------------------------//
-
 router.post("/", async (req, res) => {
 	const { title, content } = req.body;
 	const author = req.session.user.id;
 
+	// Validation
 	if (!title || !content ) {
 		return res.redirect("/new-post?error=Please, fill all fields!")
 	}
-
 	const validationResult = validate(req.body)
     if (validationResult !== "Successfully registered!") { //turi buti toks pats kaip postvalidation.js
         return res.redirect("/new-post?error=" + validationResult);
@@ -62,19 +56,20 @@ router.post("/", async (req, res) => {
 		content,
 		author,
 	});
-	UserModel.findOneAndUpdate({_id: author}, {$inc: {postsCount: 1} }).exec();
+	UserModel.findOneAndUpdate(
+		{_id: author}, 
+		{$inc: {postsCount: 1} })
+		.exec();
 
 	await newPost.save();
 	res.redirect("/?message=New post was successfully created!");
 });
-
 
 //-------------------------------------------------update post -------------------------------------------------------//
 router.put("/", async (req, res) => {
 });
 
 //------------------------------------------------- like post -------------------------------------------------------//
-
 router.get("/like/:postId", async (req, res) => {
 	if (!req.session.user?.loggedIn) {
 		return res.status(403).json({ message: "Please, log in first!" });
@@ -103,7 +98,6 @@ router.get("/like/:postId", async (req, res) => {
 });
 
 //------------------------------------------------- dislike post -------------------------------------------------------//
-
 router.get("/dislike/:postId", async (req, res) => {
 	if (!req.session.user?.loggedIn) {
 		return res.status(403).json({ message: "Please, log in first!" });

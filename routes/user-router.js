@@ -7,9 +7,7 @@ const upload = require("../config/multer.js").upload;
 const security = require("../utils/security");
 const validate = require("../utils/validation/userValidation.js");
 
-
-//-------------------------------register----------------------------------//
-
+//----------------------------------------------------------------register----------------------------------------------------------------------------//
 router.post ("/register", upload.single("img"), async (req, res) => {  //duomenu ikelimas "upload.single ("img")"
     try { 
     // console.log(req.body);
@@ -26,8 +24,14 @@ router.post ("/register", upload.single("img"), async (req, res) => {  //duomenu
         return res.redirect("/register?error=" + validationResult);
     }
 
-    //Patikrinti ar vartotojo username bei email laukeliai yra unikalus:// await UserModel.find({_id: id}) gaunamas masyvas // await UserModel.findOne({_id: id}) gaunamas vienas irasas
-         // Check if the username is already taken
+        //Patikrinti ar vartotojo username bei email laukeliai yra unikalus
+
+		// await UserModel.find({_id: id}) gaunamas masyvas
+		// await UserModel.findOne({_id: id}) gaunamas vienas irasas
+
+        // vartotojo paieška pagal elektroninį paštą arba vartotojo vardą
+
+        // Check if the username is already taken
          const existingUsername = await UserModel.findOne({ username });
          if (existingUsername) { 
              return res.redirect("/register?error=Username already exists!");
@@ -53,11 +57,11 @@ router.post ("/register", upload.single("img"), async (req, res) => {  //duomenu
         profilePicture: `/public/images/${fileName}`,
     }
 
-
     const newUser = new UserModel(newUserObj);
     await newUser.save(); //kad issaugoti user db
 
-    req.session.user = { //po registracijos  iskarto ivykdomas prijungimas vartotojo prie sistemos tad nustatoma sesija vartotojui
+	// Nustatoma sesija vartotojui - po registracijos iš kart įvykdomas prijungimas prie sistemos
+    req.session.user = { 
         id: newUser._id,
         loggedIn: true,
         // admin: newUser.admin === "simonak" //jei toks vartotojas, tada priskiriami admin teises
@@ -71,9 +75,7 @@ router.post ("/register", upload.single("img"), async (req, res) => {  //duomenu
     }
 });
 
-
-//-------------------------------all users----------------------------------//
-
+//----------------------------------------------------------------all users----------------------------------------------------------------------------//
 router.get ("/users", async (req, res) => {
     if(!req.session.user?.admin) 
         return res.status(403).json({message: "You are not allowed to"}) //http://localhost:3000/api/user/users
@@ -81,11 +83,9 @@ router.get ("/users", async (req, res) => {
 
     const users = await UserModel.find({});
     res.status(200).json (users);
-
 })
 
-//-------------------------------log in----------------------------------//
-
+//----------------------------------------------------------------log in----------------------------------------------------------------------------//
 router.post("/login", async (req, res) => {
     const {loginName, password} = req.body;
 
@@ -110,22 +110,19 @@ router.post("/login", async (req, res) => {
          )
      ) { 
         // return res.redirect("/login"); 
-                return res.redirect("/login?error=Invalid password !");
+        return res.redirect("/login?error=Invalid password !");
 
     } 
-
     req.session.user = {  //kai praeijo filtrus, nustatoma sesija 
         id: existingUser._id,
         loggedIn: true,
         admin: existingUser.admin, //
     };    
-
     // console.log(existingUser);
     res.redirect("/"); //prisijungus perkelti i homepage
 });
  
-//-------------------------------log out----------------------------------//
-
+//----------------------------------------------------------------log out----------------------------------------------------------------------------//
 router.get("/logout", async (req, res) => {
     if (!req.session.user.loggedIn) {
         res.redirect("/");
@@ -145,8 +142,7 @@ router.get("/logout", async (req, res) => {
     }
 });
  
-//-------------------------------likes----------------------------------//
-
+//----------------------------------------------------------------likes----------------------------------------------------------------------------//
 router.get("/like/:profileId", async (req, res) => {
 	if (!req.session.user?.loggedIn) {
 		return res.status(403).json({ message: "Please, log in first!" });
@@ -174,8 +170,7 @@ router.get("/like/:profileId", async (req, res) => {
 	res.status(200).json({ message: "Profile was successfully liked!" });
 });
 
-//-------------------------------dislikes----------------------------------//
-
+//----------------------------------------------------------------dislikes----------------------------------------------------------------------------//
 router.get("/dislike/:profileId", async (req, res) => {
 	if (!req.session.user?.loggedIn) {
 		return res.status(403).json({ message: "You should log in!" });
@@ -202,8 +197,7 @@ router.get("/dislike/:profileId", async (req, res) => {
 	res.status(200).json({ message: "Profile was successfully disliked!" });
 });
 
-
-//-------------------------------check session----------------------------------//
+//----------------------------------------------------------------check session------------------------------------------------------------------------------//
 
 // router.get("/check-session", async (req, res) => {
 // 	res.json({ message: "will implement in future" });

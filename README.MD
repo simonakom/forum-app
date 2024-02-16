@@ -57,8 +57,8 @@ MONGO_CONNECTION=mongodb+srv://__DB_USER:__DB_PASSWORD@__DB_HOST/__DB_NAME
 As this project is on going there is a lot more left that needs to be worked on, so this is not a resource for production ready workflow ideas or systems.
 
 Some of the things/functions left to do:
- * Update posts 
- * Delete profile 
+ * Update posts/comments
+ * Delete profile/comments
  * Likes/Dislikes
  * Change Password...
 
@@ -72,5 +72,11 @@ Hope you find this project interesting and useful!
 
 
 <div style="text-align: center;">
-  <img src="./public/pictures/forum-home.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
+  <img src="./public/pictures/main.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
+    <img src="./public/pictures/post.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
+      <img src="./public/pictures/comment.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
+        <img src="./public/pictures/profile.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
+          <img src="./public/pictures/faq.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
+            <img src="./public/pictures/login.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
+              <img src="./public/pictures/singin.png" alt="48 items" style="border-radius: 10px; display: inline-block;" />
 </div>

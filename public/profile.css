@@ -79,8 +79,6 @@
 	font-size: 13px; 
 	transition: 0.1s ease; 
 }
-
-
 .error {
 	width: 95%;
 	font-size: 14px;
@@ -92,4 +90,4 @@
 	cursor: pointer;
 	margin-bottom: 10px;
 	align-self: center;
-  }
+}

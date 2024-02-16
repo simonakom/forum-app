@@ -10,7 +10,6 @@ thumbsUpList.forEach((element) => {
 		event.target.classList.toggle("bi-hand-thumbs-up");
 	};
 });
-
 thumbsDownList.forEach((element) => {
 	element.onmouseenter = (event) => {
 		event.target.classList.toggle("bi-hand-thumbs-down");
