@@ -5,14 +5,14 @@ const UserModel = require("../models/user");
 const validate = require("../utils/validation/postValidation");
 
 //------------------------------------------------- get all posts------------------------------------------------------//
-router.get("/", async (req, res) => { // http://localhost:3000/api/post/
+router.get("/", async (req, res) => { 
 	const allPosts = await PostModel.find({});
 	res.status(200).json(allPosts);
 });
 
 //-------------------------------------------------get post by id -------------------------------------------------------//
-router.get("/:id", async (req, res) => { //http://localhost:3000/api/post/65c2769e429ff20b9f2103cb 
-	const post = await PostModel.findOne({ _id: req.params.id }); //Jei neatrandamas, reiksme tampa undefined
+router.get("/:id", async (req, res) => { 
+	const post = await PostModel.findOne({ _id: req.params.id }); 
 	if (!post) { 
 		return res.status(404).json({ message: "Post not found" });
 	}
@@ -21,14 +21,13 @@ router.get("/:id", async (req, res) => { //http://localhost:3000/api/post/65c276
 
 //-------------------------------------------------delete post -------------------------------------------------------//
 router.delete("/:id", async (req, res) => {
-	const post = await PostModel.findOne({ _id: req.params.id }); //Jei neatrandamas, reiksme tampa undefined
+	const post = await PostModel.findOne({ _id: req.params.id }); 
 	if (!post) {
 		return res.status(404).json({ message: "Post not found" });
 	}
 
-	//Jei autorius yra prisijunges vartotojas arba prisijunges vartotojas yra admin, tada leidžiame ištrinti įrašą
 	if (post.author === req.session.user.id || req.session.user.admin) {
-		await PostModel.findOneAndDelete({ _id: req.params.id }); //atranda irasa ir istrina
+		await PostModel.findOneAndDelete({ _id: req.params.id }); 
 		return res.status(200).json({ message: "Post succesfully deleted" });
 	} 
 	return res
@@ -46,11 +45,10 @@ router.post("/", async (req, res) => {
 		return res.redirect("/new-post?error=Please, fill all fields!")
 	}
 	const validationResult = validate(req.body)
-    if (validationResult !== "Successfully registered!") { //turi buti toks pats kaip postvalidation.js
+    if (validationResult !== "Successfully registered!") { 
         return res.redirect("/new-post?error=" + validationResult);
     }
  
-	// Išsaugojimas duombazėje
 	const newPost = new PostModel({
 		title,
 		content,

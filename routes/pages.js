@@ -1,16 +1,16 @@
 const express = require("express");
-const router = express.Router(); //statine funkcija klaseje express
-const UserModel = require("../models/user"); //norint dirbti su duomenimis is db (gauti users)
-const PostModel = require("../models/post"); //norint dirbti su duomenimis is db (gauti posts)
+const router = express.Router(); 
+const UserModel = require("../models/user"); 
+const PostModel = require("../models/post"); 
 const CommentModel = require("../models/comments");
 
 //------------------------------------------------- home endpoint------------------------------------------------------//
-router.get ("/", async (req, res) => { //index.ejs failo atvaizdavimas iš views aplanko
+router.get ("/", async (req, res) => { 
 
-let userData; //variable is declared before the try block,
-if (req.session.user?.loggedIn) { // Check if the user is logged in and fetch user data
+let userData; 
+if (req.session.user?.loggedIn) {  
 	try {
-		userData = await UserModel.findOne({ _id: req.session.user.id }); 	// console.log("User data:", userData);
+		userData = await UserModel.findOne({ _id: req.session.user.id }); 	
 	} catch (error) { 
 		console.error("Error fetching user data:", error);
 	}
@@ -25,46 +25,44 @@ if (req.session.user?.loggedIn) { // Check if the user is logged in and fetch us
 		path: "lastCommentBy",
 		select: "username",
 	});
-	// console.log(posts[0]);
 	
     const config = {
 		activeTab: "Home",
         title: "PulpCinemaHub",
         username: userData?.username || null,
-        loggedIn:!!req.session.user?.loggedIn, // ? reiksia kad reiksme gali buti ir ne (undefined) kuria vistiek imsime
-		message: req.query.message, //is parametru pasiimti zinute //http://localhost:3000/?message=error
+        loggedIn:!!req.session.user?.loggedIn, 
+		message: req.query.message, 
 		error: req.query.error, 
 		posts,
     }
-	res.render("index", config); //Kartu paduodami ir parametrai EJS failui
+	res.render("index", config); 
 });
 
 //------------------------------------------------- register endpoint------------------------------------------------------//
 router.get ("/register", (req, res) => { 
-	if (!!req.session.user?.loggedIn) {	//tikrina ar yra prisijunge ir ar bando vistiek  uzeiti i register - jie taip tada redirectins i pgr. puslapi
+	if (!!req.session.user?.loggedIn) {	
 		return res.redirect("/");
 	}
     const config = {
 		activeTab: "Register",
 		title: "PulpCinemaHub - Registration",
 		loggedIn: !!req.session.user?.loggedIn,
-		error: req.query.error //http://localhost:3000/register?error=error
+		error: req.query.error 
 	};
-	res.render("register", config);//Register routas skirtas registracijai
+	res.render("register", config);
 });
 
 //------------------------------------------------- login endpoint------------------------------------------------------//
 router.get("/login", (req, res) => {
-	if (!!req.session.user?.loggedIn) {	//tikrina ar yra prisijunge ir ar bando vistiek  uzeiti i login - jie taip tada redirectins i pgr. puslapi
-		return res.redirect("/");
+	if (!!req.session.user?.loggedIn) {	
 	}
 	const config = {
 		activeTab: "Login",
 		title: "PulpCinemaHub - Authentication",
 		loggedIn: !!req.session.user?.loggedIn,
-		error: req.query.error, //req.query gauna parametrus ir jei jis turi "error"  tada zinute matoma //http://localhost:3000/login?error=hello%20hello
+		error: req.query.error, 
 	};
-	res.render("login", config); //Login routas skirtas prisijungimui
+	res.render("login", config); 
 });
 
 //------------------------------------------------- help endpoint------------------------------------------------------//
@@ -80,12 +78,10 @@ router.get("/help", async (req, res) => {
 
 //------------------------------------------------- profile endpoint------------------------------------------------------//
 router.get("/my-profile", async (req, res) => {
-	if (!req.session.user?.loggedIn) { //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
+	if (!req.session.user?.loggedIn) { 
 		return res.redirect("/login?error=Please, log in first!");
 	}
-	//gauti duomenys is db ir atvaizduoti profilyje
-	const userData = await UserModel.findOne({_id: req.session.user.id}); //_id - nurodoma kokio laukelio ieskome is db 
-	// console.log(userData);
+	const userData = await UserModel.findOne({_id: req.session.user.id}); 
 	
 	const config = {
 		activeTab: "Profile",
@@ -99,29 +95,27 @@ router.get("/my-profile", async (req, res) => {
 		commentsCount: userData.commentsCount,
 		likes: userData.likes,
 		dislikes: userData.dislikes
-        // admin: userData.admin === "simonak" //jei toks vartotojas, tada priskiriami admin teises
 	};
 	res.render("profile", config);
 });
 
 //------------------------------------------------- new post endpoint------------------------------------------------------//
 router.get ("/new-post", async (req, res) => { 
-	if (!req.session.user?.loggedIn) {  //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
+	if (!req.session.user?.loggedIn) {  
 		return res.redirect("/login?error=Please, log in first!");
 	}
 		const config = {
 			title: "PulpCinemaHub - new post",
 			activeTab: "Post",
 			loggedIn:!!req.session.user?.loggedIn, 
-			error: req.query.error, //http://localhost:3000/new-post?error=error
+			error: req.query.error, 
 		}
 		res.render("new-post", config); 
-		//Kartu paduodami ir parametrai EJS failui
 	});
 
 //------------------------------------------------- get profile by id endpoint------------------------------------------------------//
 router.get("/profile/:id", async (req, res) => {
-	if (!req.session.user?.loggedIn) { //tikrinama jei neprisijunges ir jei ne- redirectinamama i login 
+	if (!req.session.user?.loggedIn) { 
 		return res.redirect("/login?error=Please, log in first!");
 	}
 
@@ -149,12 +143,8 @@ router.get("/profile/:id", async (req, res) => {
 });
 
 //------------------------------------------------ get post by id endpoint------------------------------------------------------//
-
 router.get("/post/:id", async (req, res) => {
-	//if logged checking in ejs.
-	
 	try {
-		//vietoj 2 kreipimosi i db yra vienas, ir nurodoma kad uzpildytu author id
 		const post = await PostModel.findOne({ _id: req.params.id }).populate("author")
 
 		const comments = await CommentModel.find({ post: req.params.id }).populate({

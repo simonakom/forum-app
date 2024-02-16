@@ -288,7 +288,7 @@ a[data-tooltip]:hover::before {
 .search input:focus {
   background-color: #dfcfe34c;
   color: aliceblue;
-  outline: none; /* Remove the default blue outline */
+  outline: none; 
 }
 @media (max-width: 1230px) {
   .search {

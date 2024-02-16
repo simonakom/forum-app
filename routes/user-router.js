@@ -1,73 +1,56 @@
-//skirta API, login, registracijos
-
 const express = require("express");
-const router = express.Router(); //statine funkcija klaseje express
+const router = express.Router(); 
 const UserModel = require("../models/user")
 const upload = require("../config/multer.js").upload;
 const security = require("../utils/security");
 const validate = require("../utils/validation/userValidation.js");
 
 //----------------------------------------------------------------register----------------------------------------------------------------------------//
-router.post ("/register", upload.single("img"), async (req, res) => {  //duomenu ikelimas "upload.single ("img")"
+router.post ("/register", upload.single("img"), async (req, res) => {  
     try { 
-    // console.log(req.body);
-    const {username, password, birthDate, email, } = req.body; //fields kurios gausime ir paramentrai kuriuos norima itraukti i db
-    const fileName = require ("../config/multer.js").lastFileName; //gaunamas ikelto failo pavadinimas registracijos metu
-    // console.log(fileName);
+    const {username, password, birthDate, email, } = req.body; 
+    const fileName = require ("../config/multer.js").lastFileName; 
 
     if (!username || !email || !password || !birthDate) {
        return res.redirect("/register?error=Please, fill all fields !")
     }
 
     const validationResult = validate(req.body)
-    if (validationResult !== "Successfully registered!") { //turi buti toks pats kaip uservalidation.js
+    if (validationResult !== "Successfully registered!") { 
         return res.redirect("/register?error=" + validationResult);
     }
 
-        //Patikrinti ar vartotojo username bei email laukeliai yra unikalus
-
-		// await UserModel.find({_id: id}) gaunamas masyvas
-		// await UserModel.findOne({_id: id}) gaunamas vienas irasas
-
-        // vartotojo paieška pagal elektroninį paštą arba vartotojo vardą
-
-        // Check if the username is already taken
          const existingUsername = await UserModel.findOne({ username });
          if (existingUsername) { 
              return res.redirect("/register?error=Username already exists!");
          }
-         // Check if the email is already taken
+
          const existingEmail = await UserModel.findOne({ email });
          if (existingEmail) {
              return res.redirect("/register?error=Email already exists!");
          }
 
-
-    //atlikti salt generavima, kuris bus saugojamas db
-    const salt = security.generateSalt(); //grazina salt
-    //sugeneruoti vartotojuo slaptazodi ir uzhashuoti
+    const salt = security.generateSalt(); 
     const hashedPassword = security.hashPassword(password, salt);
 
-    const newUserObj = { //naujo vartotjo aprasymas
+    const newUserObj = { 
         username, 
         email,
         salt, 
-        password: hashedPassword, //saugomas uzkoduotas slaptz.
+        password: hashedPassword, 
         birthDate,
         profilePicture: `/public/images/${fileName}`,
     }
 
     const newUser = new UserModel(newUserObj);
-    await newUser.save(); //kad issaugoti user db
+    await newUser.save(); 
 
-	// Nustatoma sesija vartotojui - po registracijos iš kart įvykdomas prijungimas prie sistemos
     req.session.user = { 
         id: newUser._id,
         loggedIn: true,
-        // admin: newUser.admin === "simonak" //jei toks vartotojas, tada priskiriami admin teises
     };       
     // console.log(newUser);
-    res.redirect("/?message=Successfully registered !"); //jei sekmingai ivykdoma - redirect + grazinamas user naujas sukurtas objektas console.log(newUser);
+    res.redirect("/?message=Successfully registered !"); 
 
     } catch (err) {
         console.log(err);
@@ -78,7 +61,7 @@ router.post ("/register", upload.single("img"), async (req, res) => {  //duomenu
 //----------------------------------------------------------------all users----------------------------------------------------------------------------//
 router.get ("/users", async (req, res) => {
     if(!req.session.user?.admin) 
-        return res.status(403).json({message: "You are not allowed to"}) //http://localhost:3000/api/user/users
+        return res.status(403).json({message: "You are not allowed to"}) 
     console.log(req.session.user);
 
     const users = await UserModel.find({});
@@ -96,30 +79,27 @@ router.post("/login", async (req, res) => {
 
     const existingUser = loginName.includes("@") 
     ? await UserModel.findOne({email:loginName}) 
-    : await UserModel.findOne({username: loginName}) //uzklaustuko nurodoma kas bus jei reiksme true
-    // if (!existingUser) return res.redirect("/login");
+    : await UserModel.findOne({username: loginName}) 
     if (!existingUser) {
         return res.redirect("/login?error=Invalid username/email !");
     }
 
     if(
-        !security.isValidCredentials( //tikrinama ar password tinkamas
+        !security.isValidCredentials( 
             password, 
             existingUser.salt,
             existingUser.password
          )
      ) { 
-        // return res.redirect("/login"); 
         return res.redirect("/login?error=Invalid password !");
-
     } 
-    req.session.user = {  //kai praeijo filtrus, nustatoma sesija 
+    req.session.user = {  
         id: existingUser._id,
         loggedIn: true,
-        admin: existingUser.admin, //
+        admin: existingUser.admin, 
     };    
-    // console.log(existingUser);
-    res.redirect("/"); //prisijungus perkelti i homepage
+
+    res.redirect("/"); 
 });
  
 //----------------------------------------------------------------log out----------------------------------------------------------------------------//
@@ -127,7 +107,7 @@ router.get("/logout", async (req, res) => {
     if (!req.session.user.loggedIn) {
         res.redirect("/");
     } else {
-        req.session.destroy((err) => { //panaikinti sesija
+        req.session.destroy((err) => { 
             if (err) {
                 console.log ("Error deleting session")
                 console.log(err);
@@ -135,7 +115,7 @@ router.get("/logout", async (req, res) => {
             }
             else {
                 console.log("Successfully logged out");
-                res.clearCookie ("connect.sid") //panaikinti cookie
+                res.clearCookie ("connect.sid") 
                 return res.redirect("/login");
             }
         }); 
@@ -154,8 +134,8 @@ router.get("/like/:profileId", async (req, res) => {
 	}
 
 	if (user.profileDislikedUsers.includes(req.session.user.id)) {
-		user.profileDislikedUsers.splice( //masyvas is kurio norima pasalinti 
-			user.profileDislikedUsers.findIndex( //paieska pagal id masyve
+		user.profileDislikedUsers.splice( 
+			user.profileDislikedUsers.findIndex( 
 				(dislikedUser) => req.session.user.id === dislikedUser
 			),
 			1

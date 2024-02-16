@@ -1,7 +1,6 @@
-//aprasyti post schemai
 const mongoose = require("mongoose");
 
-const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "schema" - generuojamas naujas objektas  (paduodamas i konstruktoriu)
+const schema = new mongoose.Schema({  
     title: {
 		type: String,
 		minLength: 6,
@@ -27,8 +26,8 @@ const schema = new mongoose.Schema({  //is mongoose objekto suteikiamos klases "
 		default: 0,
 	},
 	author: {
-		type: mongoose.Schema.Types.ObjectId, //object reference - duomenu tipas skirtas id
-		ref: "user",  // objektas is user model
+		type: mongoose.Schema.Types.ObjectId, 
+		ref: "user",  
 		required: true,
 	},
 	likesCount: {

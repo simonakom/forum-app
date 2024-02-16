@@ -20,7 +20,7 @@ This project is mvp of fullstack and SSR forum app. App was created using tailwi
 - MongoDB account and database
 - NPM or Yarn installed
 
-# 1. How to launch this project
+# How to launch this project
 
 **[✔] 1.1 Create new `/images` folder in `/public` folder**
 

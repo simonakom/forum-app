@@ -109,7 +109,7 @@ label input:focus {
     color: aliceblue;
 }
 #profile-photo {
-    display: none; /* Style the file input to be hidden */
+    display: none; 
 }
 /* link */
 .standart-link  {
